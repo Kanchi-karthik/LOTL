@@ -17,6 +17,9 @@
       --line: rgba(17, 70, 109, 0.22);
       --shadow: 0 10px 24px rgba(2, 19, 36, 0.22);
       --r: 14px;
+      --text-base: 13.5px;
+      --text-small: 12px;
+      --heading: 15px;
     }
 
     * { box-sizing: border-box; }
@@ -35,15 +38,15 @@
     }
 
     .poster {
-      width: min(calc(100vw - 12px), calc((100vh - 12px) * 1.777));
-      aspect-ratio: 16 / 9;
-      margin: 6px auto;
+      width: calc(100vw - 8px);
+      height: calc(100vh - 8px);
+      margin: 4px auto;
       background: linear-gradient(180deg, #f8fbff 0%, var(--paper) 100%);
       border-radius: 14px;
       border: 1px solid rgba(173, 218, 246, 0.55);
       box-shadow: 0 24px 56px rgba(2, 14, 28, 0.5);
       display: grid;
-      grid-template-rows: 110px 1fr 68px;
+      grid-template-rows: 126px 1fr 78px;
       overflow: hidden;
       position: relative;
     }
@@ -74,16 +77,16 @@
     .header {
       z-index: 1;
       display: grid;
-      grid-template-columns: 170px 1fr 106px;
+      grid-template-columns: 190px 1fr 116px;
       align-items: center;
       gap: 12px;
-      padding: 8px 12px;
+      padding: 10px 14px;
       background: linear-gradient(180deg, #ffffff, #eef5fc);
       border-bottom: 1px solid rgba(79, 129, 168, 0.24);
     }
 
     .logo {
-      width: 162px;
+      width: 182px;
       display: block;
       background: #fff;
       border: 1px solid rgba(0, 0, 0, 0.08);
@@ -96,7 +99,7 @@
     .school {
       margin: 0;
       color: #8b1b4e;
-      font-size: 10px;
+      font-size: 11px;
       letter-spacing: 0.64px;
       text-transform: uppercase;
       font-weight: 800;
@@ -106,7 +109,7 @@
       margin: 4px 0 0;
       font-family: "Spectral", serif;
       color: #16324d;
-      font-size: clamp(30px, 2.55vw, 40px);
+      font-size: clamp(34px, 3vw, 46px);
       line-height: 1.03;
       text-transform: uppercase;
       letter-spacing: 0.25px;
@@ -116,7 +119,7 @@
     .subtitle {
       margin: 4px 0 0;
       color: #335872;
-      font-size: 12px;
+      font-size: 14px;
       font-weight: 600;
     }
 
@@ -131,8 +134,8 @@
     }
 
     .qr {
-      width: 80px;
-      height: 80px;
+      width: 88px;
+      height: 88px;
       display: block;
       border-radius: 6px;
       border: 1px solid rgba(8, 46, 72, 0.14);
@@ -141,7 +144,7 @@
     .qr-label {
       margin: 3px 0 0;
       color: #174d79;
-      font-size: 9px;
+      font-size: 10px;
       letter-spacing: 0.42px;
       text-transform: uppercase;
       font-weight: 800;
@@ -150,16 +153,16 @@
     .main {
       z-index: 1;
       display: grid;
-      grid-template-columns: 28% 44% 28%;
-      gap: 10px;
-      padding: 10px;
+      grid-template-columns: 29% 42% 29%;
+      gap: 12px;
+      padding: 12px;
       overflow: hidden;
       align-items: stretch;
     }
 
     .col {
       display: grid;
-      gap: 8px;
+      gap: 10px;
       align-content: stretch;
       min-height: 0;
     }
@@ -178,9 +181,11 @@
       border: 1px solid var(--line);
       box-shadow: var(--shadow);
       background: #fff;
-      padding: 8px 10px;
+      padding: 10px 12px;
       overflow: hidden;
       height: 100%;
+      display: flex;
+      flex-direction: column;
     }
 
     .card::before {
@@ -202,7 +207,7 @@
 
     .h {
       margin: 0 0 5px;
-      font-size: 12px;
+      font-size: var(--heading);
       text-transform: uppercase;
       letter-spacing: 0.54px;
       font-weight: 800;
@@ -212,17 +217,17 @@
     ul {
       margin: 0;
       padding-left: 15px;
-      font-size: 10.5px;
-      line-height: 1.42;
+      font-size: var(--text-base);
+      line-height: 1.46;
       color: #21415b;
       font-weight: 500;
     }
 
-    li { margin-bottom: 3px; }
+    li { margin-bottom: 4px; }
 
     .arch-note {
       margin: 0 0 6px;
-      font-size: 10px;
+      font-size: var(--text-small);
       font-weight: 600;
       color: #2b5370;
     }
@@ -236,35 +241,36 @@
 
     .arch-image {
       width: 100%;
-      height: clamp(260px, 34vh, 360px);
-      object-fit: cover;
+      height: clamp(290px, 40vh, 430px);
+      object-fit: contain;
+      background: #0f2d49;
       display: block;
     }
 
     .stack-grid {
-      margin-top: 6px;
+      margin-top: 10px;
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 6px;
+      gap: 8px;
     }
 
     .chip {
       display: flex;
       align-items: center;
       gap: 5px;
-      font-size: 10px;
+      font-size: 12px;
       font-weight: 700;
       color: #184666;
       background: rgba(255, 255, 255, 0.94);
       border: 1px solid rgba(16, 65, 99, 0.2);
       border-radius: 8px;
-      padding: 4px 6px;
+      padding: 6px 8px;
     }
 
     .chip img {
-      width: 13px;
-      height: 13px;
-      flex: 0 0 13px;
+      width: 15px;
+      height: 15px;
+      flex: 0 0 15px;
       object-fit: contain;
     }
 
@@ -276,11 +282,11 @@
       gap: 8px;
       border-top: 1px solid rgba(78, 128, 168, 0.24);
       background: linear-gradient(180deg, #eef6fd, #e4eef9);
-      padding: 10px 14px;
+      padding: 12px 16px;
     }
 
     .repo {
-      font-size: 11px;
+      font-size: 13px;
       font-weight: 700;
       color: #214861;
       line-height: 1.4;
@@ -295,7 +301,7 @@
     .repo a:hover { text-decoration: underline; }
 
     .note {
-      font-size: 10px;
+      font-size: 11px;
       color: #4a6780;
       font-weight: 600;
     }
