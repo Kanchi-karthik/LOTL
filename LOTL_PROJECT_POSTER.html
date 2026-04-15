@@ -91,6 +91,30 @@
       z-index: 1;
     }
 
+    .poster::before,
+    .poster::after {
+      content: "";
+      position: absolute;
+      inset: auto;
+      width: 120%;
+      height: 84px;
+      left: -10%;
+      z-index: 0;
+      pointer-events: none;
+      transform: rotate(-8deg);
+      border-radius: 18px;
+    }
+
+    .poster::before {
+      top: 21%;
+      background: linear-gradient(90deg, rgba(190, 26, 62, 0.2) 0%, rgba(255, 255, 255, 0.08) 65%, rgba(255, 255, 255, 0.02) 100%);
+    }
+
+    .poster::after {
+      top: 63%;
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0.24) 0%, rgba(195, 34, 67, 0.14) 58%, rgba(195, 34, 67, 0.04) 100%);
+    }
+
     .header {
       padding: 16px 18px 14px;
       background: linear-gradient(180deg, #ffffff 0%, #eef6ff 100%);
@@ -205,6 +229,8 @@
       grid-template-columns: 1fr 1.7fr 1fr;
       gap: 16px;
       padding: 16px;
+      position: relative;
+      z-index: 1;
     }
 
     .card {
@@ -328,11 +354,29 @@
       border: 1px solid rgba(11, 45, 75, 0.16);
       border-radius: 12px;
       padding: 9px;
-      text-align: center;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-align: left;
       font-weight: 600;
       font-size: 0.8rem;
       letter-spacing: 0.22px;
       color: #17405f;
+    }
+
+    .stack-logo {
+      width: 19px;
+      height: 19px;
+      object-fit: contain;
+      flex: 0 0 19px;
+    }
+
+    .stack-icon {
+      width: 19px;
+      text-align: center;
+      color: #16507a;
+      flex: 0 0 19px;
+      font-size: 0.92rem;
     }
 
     .footer {
@@ -429,6 +473,11 @@
         background: #fff;
       }
 
+      .poster::before,
+      .poster::after {
+        display: none;
+      }
+
       .poster {
         width: var(--poster-width);
         height: var(--poster-height);
@@ -507,14 +556,14 @@
         <article class="card stack">
           <h2><i class="fa-solid fa-layer-group"></i>Technology Stack</h2>
           <div class="stack-grid">
-            <div class="chip">Flask REST API</div>
-            <div class="chip">Scikit-learn</div>
-            <div class="chip">Isolation Forest</div>
-            <div class="chip">Joblib Models</div>
-            <div class="chip">Falco Event Parsing</div>
-            <div class="chip">MITRE ATT&CK Mapping</div>
-            <div class="chip">K8s Monitor Hooks</div>
-            <div class="chip">JSON Forensic Store</div>
+            <div class="chip"><img class="stack-logo" src="https://cdn.simpleicons.org/flask/000000" alt="Flask" />Flask REST API</div>
+            <div class="chip"><img class="stack-logo" src="https://cdn.simpleicons.org/scikitlearn/F7931E" alt="Scikit-learn" />Scikit-learn</div>
+            <div class="chip"><img class="stack-logo" src="https://cdn.simpleicons.org/python/3776AB" alt="Python" />Isolation Forest</div>
+            <div class="chip"><img class="stack-logo" src="https://cdn.simpleicons.org/python/3776AB" alt="Joblib" />Joblib Models</div>
+            <div class="chip"><span class="stack-icon"><i class="fa-solid fa-shield-halved"></i></span>Falco Event Parsing</div>
+            <div class="chip"><span class="stack-icon"><i class="fa-solid fa-crosshairs"></i></span>MITRE ATT&CK Mapping</div>
+            <div class="chip"><img class="stack-logo" src="https://cdn.simpleicons.org/kubernetes/326CE5" alt="Kubernetes" />K8s Monitor Hooks</div>
+            <div class="chip"><img class="stack-logo" src="https://cdn.simpleicons.org/json/000000" alt="JSON" />JSON Forensic Store</div>
           </div>
         </article>
       </section>
