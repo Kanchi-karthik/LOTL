@@ -46,7 +46,7 @@
       font-family: var(--font-body);
       font-size: calc(16px * var(--ui-scale));
       min-height: 100vh;
-      padding: 6px;
+      padding: 0;
       position: relative;
       overflow-x: hidden;
       text-rendering: optimizeLegibility;
@@ -81,13 +81,13 @@
     }
 
     .poster {
-      width: min(99.2vw, 1800px);
-      height: calc(100vh - 8px);
-      min-height: calc(100vh - 8px);
-      margin: 0 auto;
+      width: 100vw;
+      height: 100vh;
+      min-height: 100vh;
+      margin: 0;
       border: 1px solid rgba(172, 223, 255, 0.55);
       background: linear-gradient(180deg, #f8fcff 0%, var(--paper) 36%, var(--paper-2) 100%);
-      border-radius: 24px;
+      border-radius: 0;
       box-shadow: 0 30px 74px rgba(1, 7, 18, 0.58);
       overflow: hidden;
       position: relative;
@@ -136,7 +136,7 @@
     }
 
     .header {
-      padding: 18px 22px 16px;
+      padding: 20px 26px 18px;
       background: linear-gradient(180deg, #ffffff 0%, #eef6ff 100%);
       border-bottom: 2px solid rgba(26, 74, 116, 0.14);
       position: sticky;
@@ -217,7 +217,7 @@
       font-family: var(--font-display);
       font-weight: 700;
       line-height: 1.03;
-      font-size: clamp(2rem, 3.4vw, 3.8rem);
+      font-size: clamp(2.2rem, 3.8vw, 4.3rem);
       text-transform: uppercase;
       color: #0f2a43;
       letter-spacing: 0.5px;
@@ -228,7 +228,7 @@
     .subtitle {
       margin: 9px auto 2px;
       max-width: 94%;
-      font-size: clamp(1.05rem, 1.9vw, 1.34rem);
+      font-size: clamp(1.15rem, 2.1vw, 1.55rem);
       font-weight: 500;
       color: #274760;
       letter-spacing: 0.08px;
@@ -237,7 +237,7 @@
 
     .school-line {
       margin: 0;
-      font-size: clamp(0.9rem, 1.3vw, 1.02rem);
+      font-size: clamp(0.98rem, 1.45vw, 1.14rem);
       font-weight: 800;
       text-transform: uppercase;
       color: #7b1246;
@@ -246,18 +246,18 @@
 
     .main {
       display: grid;
-      grid-template-columns: 1fr 1.7fr 1fr;
-      gap: 18px;
-      padding: 18px;
+      grid-template-columns: 1.1fr 1.5fr 1.1fr;
+      gap: 20px;
+      padding: 20px 24px 24px;
       position: relative;
       z-index: 1;
-      height: calc(100% - 272px);
+      height: calc(100% - 304px);
       overflow: auto;
     }
 
     .card {
       border-radius: var(--radius);
-      padding: 18px;
+      padding: 20px;
       box-shadow: var(--card-shadow);
       border: 1px solid rgba(5, 37, 63, 0.1);
       position: relative;
@@ -278,7 +278,7 @@
     .card h2 {
       margin: 0 0 10px;
       font-family: var(--font-body);
-      font-size: 1.12rem;
+      font-size: 1.22rem;
       text-transform: uppercase;
       letter-spacing: 0.72px;
       color: #14324c;
@@ -323,7 +323,7 @@
       padding-left: 18px;
       line-height: 1.52;
       color: #1b3850;
-      font-size: 1rem;
+      font-size: 1.08rem;
       font-weight: 500;
     }
 
@@ -344,7 +344,7 @@
     .diagram-note {
       margin: 0 0 12px;
       color: #234761;
-      font-size: 0.95rem;
+      font-size: 1rem;
       font-weight: 600;
       letter-spacing: 0.2px;
     }
@@ -381,7 +381,7 @@
       gap: 8px;
       text-align: left;
       font-weight: 600;
-      font-size: 0.9rem;
+      font-size: 0.96rem;
       letter-spacing: 0.22px;
       color: #17405f;
     }
@@ -419,11 +419,11 @@
       margin: 0 0 4px;
       text-transform: uppercase;
       letter-spacing: 0.72px;
-      font-size: 0.88rem;
+      font-size: 0.94rem;
     }
 
     .repo-link {
-      font-size: clamp(0.9rem, 1.55vw, 1.08rem);
+      font-size: clamp(1rem, 1.75vw, 1.18rem);
       font-weight: 600;
       color: #11487a;
       word-break: break-all;
@@ -437,7 +437,7 @@
     }
 
     .muted {
-      font-size: 0.9rem;
+      font-size: 0.94rem;
       color: var(--ink-soft);
       line-height: 1.48;
     }
@@ -483,6 +483,8 @@
         height: auto;
         min-height: auto;
         overflow: auto;
+        border-radius: 18px;
+        margin: 12px auto;
       }
     }
 
