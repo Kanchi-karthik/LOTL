@@ -96,19 +96,71 @@
       backdrop-filter: blur(8px);
     }
 
+    .header-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .brand-left {
+      display: grid;
+      gap: 6px;
+      justify-items: start;
+      max-width: 62%;
+    }
+
     .amrita-banner {
-      width: 100%;
-      border-radius: 15px;
+      width: clamp(170px, 23vw, 235px);
+      border-radius: 12px;
       border: 1px solid rgba(9, 48, 83, 0.14);
-      box-shadow: 0 10px 20px rgba(10, 35, 58, 0.16);
+      box-shadow: 0 8px 16px rgba(10, 35, 58, 0.14);
       background: #ffffff;
-      padding: 10px 12px;
+      padding: 6px 8px;
       object-fit: contain;
+    }
+
+    .dept-line {
+      margin: 0;
+      font-size: 0.76rem;
+      color: #3d5972;
+      font-weight: 700;
+      letter-spacing: 0.35px;
+      text-transform: uppercase;
+    }
+
+    .qr-box {
+      background: #ffffff;
+      border: 1px solid rgba(10, 47, 76, 0.18);
+      border-radius: 12px;
+      padding: 8px;
+      text-align: center;
+      box-shadow: 0 8px 16px rgba(10, 35, 58, 0.12);
+      min-width: 98px;
+    }
+
+    .qr-img {
+      width: 80px;
+      height: 80px;
+      display: block;
+      border-radius: 8px;
+      margin: 0 auto 5px;
+      border: 1px solid rgba(9, 60, 96, 0.12);
+    }
+
+    .qr-caption {
+      margin: 0;
+      font-size: 0.66rem;
+      font-weight: 800;
+      color: #10406b;
+      letter-spacing: 0.42px;
+      text-transform: uppercase;
+      line-height: 1.2;
     }
 
     .title-wrap {
       text-align: center;
-      padding: 12px 8px 4px;
+      padding: 8px 8px 4px;
     }
 
     h1 {
@@ -316,6 +368,23 @@
         position: static;
       }
 
+      .header-top {
+        align-items: center;
+      }
+
+      .brand-left {
+        max-width: 70%;
+      }
+
+      .amrita-banner {
+        width: clamp(140px, 36vw, 210px);
+      }
+
+      .qr-img {
+        width: 70px;
+        height: 70px;
+      }
+
       .poster {
         width: min(96vw, 780px);
         aspect-ratio: auto;
@@ -354,7 +423,16 @@
 <body>
   <section class="poster animate__animated animate__fadeIn">
     <header class="header">
-      <img class="amrita-banner" src="amrita.png" alt="Amrita Vishwa Vidyapeetham" />
+      <div class="header-top">
+        <div class="brand-left">
+          <img class="amrita-banner" src="amrita.png" alt="Amrita Vishwa Vidyapeetham" />
+          <p class="dept-line">School of Computing, Amrita Vishwa Vidyapeetham</p>
+        </div>
+        <a class="qr-box" href="https://github.com/Kanchi-karthik/LOTL" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository">
+          <img class="qr-img" src="https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=https%3A%2F%2Fgithub.com%2FKanchi-karthik%2FLOTL" alt="GitHub repository QR code" />
+          <p class="qr-caption">Scan Repo</p>
+        </a>
+      </div>
       <div class="title-wrap">
         <p class="school-line">School of Computing | Cybersecurity Project Showcase</p>
         <h1>LOTLGuard: Living-Off-The-Land Threat Detection Framework</h1>
