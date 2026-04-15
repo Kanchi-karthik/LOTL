@@ -9,6 +9,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet" />
   <style>
     :root {
+      --poster-width: 841mm;
+      --poster-height: 594mm;
       --paper: #f3f8ff;
       --ink: #0f1a27;
       --navy: #0f2740;
@@ -39,7 +41,8 @@
     }
 
     .poster {
-      width: min(1280px, 100%);
+      width: min(96vw, calc((100vh - 36px) * 1.416));
+      aspect-ratio: 841 / 594;
       margin: 0 auto;
       border: 1px solid rgba(172, 223, 255, 0.45);
       background: var(--paper);
@@ -242,14 +245,26 @@
       }
     }
 
+    @page {
+      size: A1 landscape;
+      margin: 0;
+    }
+
     @media print {
+      html,
+      body {
+        width: var(--poster-width);
+        height: var(--poster-height);
+      }
+
       body {
         padding: 0;
         background: #fff;
       }
 
       .poster {
-        width: 100%;
+        width: var(--poster-width);
+        height: var(--poster-height);
         max-width: none;
         border-radius: 0;
         border: none;
