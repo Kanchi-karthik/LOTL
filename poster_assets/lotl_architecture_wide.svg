@@ -79,7 +79,7 @@
 
     <text x="654" y="322" font-size="18" font-weight="700">Key Outputs</text>
     <text x="654" y="350" font-size="15">- Threat score (0 to 100)</text>
-    <text x="654" y="376" font-size="15">- MITRE ATT&CK mapped techniques</text>
+    <text x="654" y="376" font-size="15">- MITRE ATT&amp;CK mapped techniques</text>
     <text x="654" y="402" font-size="15">- Automated quarantine and dashboard alerting</text>
   </g>
 
