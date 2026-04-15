@@ -17,9 +17,11 @@
       --line: rgba(17, 70, 109, 0.22);
       --shadow: 0 10px 24px rgba(2, 19, 36, 0.22);
       --r: 14px;
-      --text-base: 18.5px;
-      --text-small: 16px;
-      --heading: 23px;
+      --poster-w: 1366px;
+      --poster-h: 768px;
+      --text-base: 20px;
+      --text-small: 17px;
+      --heading: 25px;
     }
 
     * { box-sizing: border-box; }
@@ -40,13 +42,15 @@
     .poster {
       width: 100vw;
       height: 100vh;
+      min-width: var(--poster-w);
+      min-height: var(--poster-h);
       margin: 0;
       background: linear-gradient(180deg, #f8fbff 0%, var(--paper) 100%);
       border-radius: 0;
       border: 1px solid rgba(173, 218, 246, 0.55);
       box-shadow: 0 24px 56px rgba(2, 14, 28, 0.5);
       display: grid;
-      grid-template-rows: 198px 1fr 100px;
+      grid-template-rows: 210px 1fr 106px;
       overflow: hidden;
       position: relative;
     }
@@ -77,16 +81,16 @@
     .header {
       z-index: 1;
       display: grid;
-      grid-template-columns: 310px 1fr 176px;
+      grid-template-columns: 332px 1fr 190px;
       align-items: center;
       gap: 12px;
-      padding: 18px 22px;
+      padding: 20px 24px;
       background: linear-gradient(180deg, #ffffff, #eef5fc);
       border-bottom: 1px solid rgba(79, 129, 168, 0.24);
     }
 
     .logo {
-      width: 292px;
+      width: 306px;
       display: block;
       background: #fff;
       border: 1px solid rgba(0, 0, 0, 0.08);
@@ -99,7 +103,7 @@
     .school {
       margin: 0;
       color: #8b1b4e;
-      font-size: 15px;
+      font-size: 16px;
       letter-spacing: 0.64px;
       text-transform: uppercase;
       font-weight: 800;
@@ -109,7 +113,7 @@
       margin: 4px 0 0;
       font-family: "Spectral", serif;
       color: #16324d;
-      font-size: clamp(58px, 4.8vw, 78px);
+      font-size: clamp(60px, 5vw, 82px);
       line-height: 1.03;
       text-transform: uppercase;
       letter-spacing: 0.25px;
@@ -119,7 +123,7 @@
     .subtitle {
       margin: 4px 0 0;
       color: #335872;
-      font-size: 22px;
+      font-size: 24px;
       font-weight: 600;
     }
 
@@ -134,8 +138,8 @@
     }
 
     .qr {
-      width: 152px;
-      height: 152px;
+      width: 164px;
+      height: 164px;
       display: block;
       border-radius: 6px;
       border: 1px solid rgba(8, 46, 72, 0.14);
@@ -144,7 +148,7 @@
     .qr-label {
       margin: 3px 0 0;
       color: #174d79;
-      font-size: 14px;
+      font-size: 15px;
       letter-spacing: 0.42px;
       text-transform: uppercase;
       font-weight: 800;
@@ -154,15 +158,15 @@
       z-index: 1;
       display: grid;
       grid-template-columns: 30% 40% 30%;
-      gap: 18px;
-      padding: 18px;
+      gap: 20px;
+      padding: 20px;
       overflow: auto;
       align-items: stretch;
     }
 
     .col {
       display: grid;
-      gap: 16px;
+      gap: 18px;
       align-content: stretch;
       min-height: 0;
     }
@@ -181,7 +185,7 @@
       border: 1px solid var(--line);
       box-shadow: var(--shadow);
       background: #fff;
-      padding: 14px 16px;
+      padding: 16px 18px;
       overflow: hidden;
       height: auto;
       display: flex;
@@ -222,12 +226,12 @@
       margin: 0;
       padding-left: 15px;
       font-size: var(--text-base);
-      line-height: 1.62;
+      line-height: 1.66;
       color: #21415b;
       font-weight: 500;
     }
 
-    li { margin-bottom: 10px; }
+    li { margin-bottom: 11px; }
 
     .arch-note {
       margin: 0 0 6px;
@@ -245,7 +249,7 @@
 
     .arch-image {
       width: 100%;
-      height: clamp(520px, 66vh, 860px);
+      height: clamp(560px, 70vh, 920px);
       object-fit: contain;
       background: #0f2d49;
       display: block;
@@ -255,26 +259,26 @@
       margin-top: 10px;
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
+      gap: 11px;
     }
 
     .chip {
       display: flex;
       align-items: center;
       gap: 5px;
-      font-size: 16px;
+      font-size: 17px;
       font-weight: 700;
       color: #184666;
       background: rgba(255, 255, 255, 0.94);
       border: 1px solid rgba(16, 65, 99, 0.2);
       border-radius: 8px;
-      padding: 10px 12px;
+      padding: 11px 13px;
     }
 
     .chip img {
-      width: 20px;
-      height: 20px;
-      flex: 0 0 20px;
+      width: 21px;
+      height: 21px;
+      flex: 0 0 21px;
       object-fit: contain;
     }
 
@@ -290,7 +294,7 @@
     }
 
     .repo {
-      font-size: 18px;
+      font-size: 19px;
       font-weight: 700;
       color: #214861;
       line-height: 1.4;
@@ -305,7 +309,7 @@
     .repo a:hover { text-decoration: underline; }
 
     .note {
-      font-size: 16px;
+      font-size: 17px;
       color: #4a6780;
       font-weight: 600;
     }
@@ -314,6 +318,8 @@
       html, body { overflow: auto; }
       .poster {
         width: min(98vw, 980px);
+        min-width: 0;
+        min-height: 0;
         height: auto;
         aspect-ratio: auto;
         margin: 10px auto;
