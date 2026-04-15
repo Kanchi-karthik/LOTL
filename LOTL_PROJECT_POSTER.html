@@ -6,30 +6,26 @@
   <title>LOTLGuard Project Poster</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Spectral:wght@600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Spectral:wght@600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg1: #0a1d30;
-      --bg2: #16466b;
-      --paper: #edf4fb;
-      --ink: #16314d;
-      --ink-soft: #375770;
-      --line: rgba(17, 70, 109, 0.22);
-      --shadow: 0 10px 24px rgba(2, 19, 36, 0.22);
-      --maroon: #7e1e3e;
-      --maroon-soft: rgba(126, 30, 62, 0.35);
-      --beige: #ecd9b5;
-      --r: 14px;
-      --poster-w: 1366px;
-      --poster-h: 768px;
-      --text-base: 16px;
-      --text-small: 14px;
-      --heading: 22px;
+      --bg1: #0b2034;
+      --bg2: #1a4469;
+      --paper: #eff5fb;
+      --ink: #18324a;
+      --ink-soft: #33546f;
+      --maroon: #7a1e3f;
+      --maroon-soft: rgba(122, 30, 63, 0.25);
+      --beige-soft: rgba(232, 216, 188, 0.22);
+      --line: rgba(20, 74, 112, 0.2);
+      --shadow: 0 10px 26px rgba(3, 20, 38, 0.2);
+      --radius: 12px;
     }
 
     * { box-sizing: border-box; }
 
-    html, body {
+    html,
+    body {
       width: 100%;
       height: 100%;
       margin: 0;
@@ -37,23 +33,21 @@
       font-family: "Sora", system-ui, sans-serif;
       color: var(--ink);
       background:
-        radial-gradient(circle at 12% 16%, rgba(67, 214, 255, 0.24), transparent 26%),
-        radial-gradient(circle at 88% 10%, rgba(255, 161, 186, 0.2), transparent 24%),
-        linear-gradient(150deg, var(--bg1), #123754 48%, var(--bg2));
+        radial-gradient(circle at 10% 14%, rgba(64, 214, 255, 0.22), transparent 28%),
+        radial-gradient(circle at 92% 10%, rgba(255, 178, 197, 0.18), transparent 26%),
+        linear-gradient(150deg, var(--bg1), #123753 46%, var(--bg2));
     }
 
     .poster {
-      width: 100vw;
-      height: 100vh;
-      min-width: var(--poster-w);
-      min-height: var(--poster-h);
-      margin: 0;
-      background: linear-gradient(180deg, #f8fbff 0%, var(--paper) 100%);
-      border-radius: 0;
+      width: calc(100vw - 6px);
+      height: calc(100vh - 6px);
+      margin: 3px auto;
       border: 2px solid var(--maroon-soft);
-      box-shadow: 0 24px 56px rgba(2, 14, 28, 0.5);
+      border-radius: 12px;
+      background: linear-gradient(180deg, #f8fbff 0%, var(--paper) 100%);
+      box-shadow: 0 24px 56px rgba(2, 14, 28, 0.45);
       display: grid;
-      grid-template-rows: 206px 1fr 84px;
+      grid-template-rows: 154px 1fr 64px;
       overflow: hidden;
       position: relative;
     }
@@ -64,7 +58,7 @@
       position: absolute;
       left: -10%;
       width: 120%;
-      height: 64px;
+      height: 56px;
       transform: rotate(-6deg);
       pointer-events: none;
       z-index: 0;
@@ -73,33 +67,34 @@
 
     .poster::before {
       top: 47%;
-      background: linear-gradient(90deg, rgba(126, 30, 62, 0.2), rgba(236, 217, 181, 0.16), rgba(236, 217, 181, 0.08));
+      background: linear-gradient(90deg, rgba(122, 30, 63, 0.18), var(--beige-soft), rgba(122, 30, 63, 0.08));
     }
 
     .poster::after {
       top: 74%;
-      background: linear-gradient(90deg, rgba(236, 217, 181, 0.24), rgba(126, 30, 62, 0.14), rgba(236, 217, 181, 0.1));
+      background: linear-gradient(90deg, var(--beige-soft), rgba(122, 30, 63, 0.14), rgba(232, 216, 188, 0.12));
     }
 
     .header {
       z-index: 1;
       display: grid;
-      grid-template-columns: 540px 1fr 210px;
-      align-items: center;
+      grid-template-columns: 420px 1fr 130px;
       gap: 12px;
-      padding: 14px 18px;
-      background: linear-gradient(180deg, #ffffff, #eef5fc);
-      border-bottom: 3px solid rgba(126, 30, 62, 0.24);
+      align-items: center;
+      padding: 10px 14px;
+      border-bottom: 2px solid rgba(122, 30, 63, 0.2);
+      background: linear-gradient(180deg, #ffffff, #eef4fb);
     }
 
-    .brand-wrap {
+    .brand {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 10px;
     }
 
     .logo {
-      width: 340px;
+      width: 250px;
+      max-width: 100%;
       display: block;
       background: #fff;
       border: 1px solid rgba(0, 0, 0, 0.08);
@@ -108,53 +103,55 @@
     }
 
     .brand-text {
-      max-width: 185px;
+      max-width: 150px;
     }
 
     .brand-school {
       margin: 0;
       color: var(--maroon);
-      font-size: 15px;
-      letter-spacing: 0.5px;
+      font-size: 12px;
+      line-height: 1.2;
+      letter-spacing: 0.45px;
       font-weight: 800;
       text-transform: uppercase;
-      line-height: 1.2;
     }
 
     .brand-campus {
-      margin: 5px 0 0;
-      color: #3a536a;
-      font-size: 11px;
+      margin: 4px 0 0;
+      color: #3b566e;
+      font-size: 10px;
+      line-height: 1.25;
       font-weight: 700;
-      line-height: 1.3;
     }
 
-    .title-wrap { text-align: center; }
+    .title-wrap {
+      text-align: center;
+    }
 
-    .school {
+    .school-line {
       margin: 0;
       color: var(--maroon);
-      font-size: 12px;
-      letter-spacing: 0.64px;
-      text-transform: uppercase;
+      font-size: 11px;
       font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.52px;
     }
 
     .title {
       margin: 4px 0 0;
       font-family: "Spectral", serif;
       color: #16324d;
-      font-size: clamp(44px, 3.6vw, 58px);
+      font-size: clamp(42px, 3.2vw, 56px);
       line-height: 1.03;
       text-transform: uppercase;
-      letter-spacing: 0.25px;
+      letter-spacing: 0.24px;
       font-weight: 700;
     }
 
     .subtitle {
       margin: 4px 0 0;
-      color: #335872;
-      font-size: 16px;
+      color: #355a74;
+      font-size: 14px;
       font-weight: 600;
     }
 
@@ -164,13 +161,13 @@
       background: #fff;
       border: 1px solid rgba(17, 72, 110, 0.22);
       border-radius: 10px;
-      padding: 5px;
+      padding: 4px;
       box-shadow: var(--shadow);
     }
 
     .qr {
-      width: 128px;
-      height: 128px;
+      width: 108px;
+      height: 108px;
       display: block;
       border-radius: 6px;
       border: 1px solid rgba(8, 46, 72, 0.14);
@@ -179,8 +176,8 @@
     .qr-label {
       margin: 3px 0 0;
       color: #174d79;
-      font-size: 11px;
-      letter-spacing: 0.42px;
+      font-size: 10px;
+      letter-spacing: 0.35px;
       text-transform: uppercase;
       font-weight: 800;
     }
@@ -188,43 +185,27 @@
     .main {
       z-index: 1;
       display: grid;
-      grid-template-columns: 27% 46% 27%;
-      gap: 14px;
-      padding: 14px;
-      overflow: auto;
-      align-items: stretch;
+      grid-template-columns: 30% 44% 26%;
+      gap: 10px;
+      padding: 10px;
+      overflow: hidden;
     }
 
     .col {
       display: grid;
-      gap: 12px;
-      align-content: stretch;
+      gap: 8px;
+      align-content: start;
       min-height: 0;
     }
 
-    .center-col {
-      grid-template-rows: 1fr;
-    }
-
-    .left-col { grid-template-rows: none; }
-
-    .right-col { grid-template-rows: none; }
-
     .card {
       position: relative;
-      border-radius: var(--r);
+      border-radius: var(--radius);
       border: 1px solid var(--line);
       box-shadow: var(--shadow);
       background: #fff;
-      padding: 14px 16px;
+      padding: 8px 10px;
       overflow: hidden;
-      height: auto;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .center-main {
-      justify-content: space-between;
     }
 
     .card::before {
@@ -233,8 +214,8 @@
       top: 0;
       left: 0;
       right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, rgba(126, 30, 62, 0.8), rgba(236, 217, 181, 0.9));
+      height: 3px;
+      background: linear-gradient(90deg, rgba(122, 30, 63, 0.85), rgba(236, 217, 181, 0.9));
     }
 
     .objective { background: linear-gradient(160deg, #e8f8ff, #d9effd); }
@@ -246,27 +227,27 @@
 
     .h {
       margin: 0 0 5px;
-      font-size: var(--heading);
+      font-size: 15px;
       text-transform: uppercase;
-      letter-spacing: 0.54px;
+      letter-spacing: 0.4px;
       font-weight: 800;
       color: #173f5f;
     }
 
     ul {
       margin: 0;
-      padding-left: 15px;
-      font-size: var(--text-base);
+      padding-left: 16px;
+      font-size: 13px;
       line-height: 1.45;
       color: #21415b;
       font-weight: 500;
     }
 
-    li { margin-bottom: 7px; }
+    li { margin-bottom: 5px; }
 
     .arch-note {
       margin: 0 0 6px;
-      font-size: var(--text-small);
+      font-size: 12px;
       font-weight: 600;
       color: #2b5370;
     }
@@ -280,36 +261,36 @@
 
     .arch-image {
       width: 100%;
-      height: clamp(360px, 50vh, 620px);
+      height: 340px;
       object-fit: contain;
       background: #0f2d49;
       display: block;
     }
 
     .stack-grid {
-      margin-top: 10px;
+      margin-top: 8px;
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
+      gap: 8px;
     }
 
     .chip {
       display: flex;
       align-items: center;
       gap: 5px;
-      font-size: 14px;
+      font-size: 12px;
       font-weight: 700;
       color: #184666;
       background: rgba(255, 255, 255, 0.94);
       border: 1px solid rgba(16, 65, 99, 0.2);
       border-radius: 8px;
-      padding: 7px 9px;
+      padding: 5px 7px;
     }
 
     .chip img {
-      width: 16px;
-      height: 16px;
-      flex: 0 0 16px;
+      width: 15px;
+      height: 15px;
+      flex: 0 0 15px;
       object-fit: contain;
     }
 
@@ -321,14 +302,14 @@
       gap: 8px;
       border-top: 1px solid rgba(78, 128, 168, 0.24);
       background: linear-gradient(180deg, #eef6fd, #e4eef9);
-      padding: 14px 18px;
+      padding: 8px 12px;
     }
 
     .repo {
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 700;
       color: #214861;
-      line-height: 1.4;
+      line-height: 1.35;
     }
 
     .repo a {
@@ -340,51 +321,29 @@
     .repo a:hover { text-decoration: underline; }
 
     .note {
-      font-size: 10px;
+      font-size: 9px;
       color: #4a6780;
-      font-weight: 600;
+      font-weight: 700;
     }
 
-    .objective ul li:nth-child(n+4),
-    .modules ul li:nth-child(n+4),
-    .implementation ul li:nth-child(n+4),
-    .results ul li:nth-child(n+4),
-    .conclusion ul li:nth-child(n+4) {
-      display: none;
-    }
-
-    @media (max-width: 1100px) {
+    @media (max-width: 1200px) {
       html, body { overflow: auto; }
       .poster {
         width: min(98vw, 980px);
-        min-width: 0;
-        min-height: 0;
         height: auto;
-        aspect-ratio: auto;
         margin: 10px auto;
       }
-      .objective ul li,
-      .modules ul li,
-      .implementation ul li,
-      .results ul li,
-      .conclusion ul li {
-        display: list-item !important;
-      }
       .header { grid-template-columns: 1fr; }
-      .brand-wrap { flex-direction: column; align-items: flex-start; }
-      .qr-box { justify-self: start; }
       .main { grid-template-columns: 1fr; }
-      .left-col,
-      .right-col { grid-template-rows: none; }
-      .arch-image { height: auto; }
       .footer { grid-template-columns: 1fr; }
+      .arch-image { height: auto; }
     }
   </style>
 </head>
 <body>
   <section class="poster">
     <header class="header">
-      <div class="brand-wrap">
+      <div class="brand">
         <img class="logo" src="amrita.png" alt="Amrita Vishwa Vidyapeetham" />
         <div class="brand-text">
           <p class="brand-school">School of Computing</p>
@@ -393,7 +352,7 @@
       </div>
 
       <div class="title-wrap">
-        <p class="school">Cybersecurity Project Showcase</p>
+        <p class="school-line">Cybersecurity Project Showcase</p>
         <h1 class="title">LOTLGuard: Living-Off-The-Land Threat Detection Framework</h1>
         <p class="subtitle">ML-Driven Real-Time SOC Dashboard with MITRE Mapping, Quarantine, and Incident Response</p>
       </div>
@@ -405,14 +364,13 @@
     </header>
 
     <main class="main">
-      <section class="col left-col">
+      <section class="col">
         <article class="card objective">
           <h2 class="h">Objective</h2>
           <ul>
             <li>Detect LOTL command misuse in real time with behavioral and anomaly signals.</li>
             <li>Correlate events with threat scoring and MITRE ATT&CK mapping.</li>
             <li>Provide SOC dashboard for incidents, topology, and attacker geolocation.</li>
-            <li>Trigger automated response with quarantine and forensic capture.</li>
           </ul>
         </article>
 
@@ -422,7 +380,6 @@
             <li>Dashboard: Flask UI, APIs, live charts, incident timeline.</li>
             <li>Backend: parsing, enrichment, threat scoring, persistence.</li>
             <li>Detection: Isolation Forest with command feature extraction.</li>
-            <li>Response: severity-based containment and auto-block logic.</li>
           </ul>
         </article>
 
@@ -432,12 +389,11 @@
             <li>Python 3.8+, Flask, scikit-learn, joblib stack.</li>
             <li>Features include entropy, risky tools, paths, network indicators.</li>
             <li>Persistent quarantine logs and forensic snapshots.</li>
-            <li>Falco-compatible ingestion with Kubernetes monitoring hooks.</li>
           </ul>
         </article>
       </section>
 
-      <section class="col center-col">
+      <section class="col">
         <article class="card center-main">
           <h2 class="h">System Architecture and Infrastructure</h2>
           <p class="arch-note">Organized pipeline view from event generation to SOC response and containment.</p>
@@ -456,15 +412,13 @@
         </article>
       </section>
 
-      <section class="col right-col">
+      <section class="col">
         <article class="card results">
           <h2 class="h">Results</h2>
           <ul>
             <li>Model accuracy around 95% on controlled test data.</li>
             <li>False positives tuned near 2% for balanced alerting.</li>
             <li>Detection latency under 50 ms per prediction.</li>
-            <li>Threat score normalized to 0 to 100 for SOC triage.</li>
-            <li>Automated responses across low to critical severity.</li>
           </ul>
         </article>
 
@@ -474,7 +428,6 @@
             <li>LOTLGuard delivers practical and reproducible LOTL threat detection.</li>
             <li>Combines ML, rules, and response orchestration in one workflow.</li>
             <li>Designed for clear SOC visibility and rapid incident containment.</li>
-            <li>Ready for presentation and demo screenshots.</li>
           </ul>
         </article>
       </section>
