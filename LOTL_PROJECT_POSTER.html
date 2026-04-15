@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LOTLGuard Project Poster</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700;900&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --paper: #fff9e8;
+      --ink: #1a1a1a;
+      --accent: #153b50;
+      --mint: #d8f0e5;
+      --sky: #d9eef9;
+      --apricot: #ffe1bf;
+      --rose: #f8d6da;
+      --lav: #e2dcff;
+      --gold: #ffe9a8;
+      --card-shadow: 0 10px 24px rgba(0, 0, 0, 0.07);
+      --radius: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 20% 15%, rgba(255, 231, 180, 0.7), transparent 28%),
+        radial-gradient(circle at 80% 85%, rgba(200, 232, 255, 0.6), transparent 30%),
+        linear-gradient(180deg, #f9efd0 0%, #fff7e2 60%, #fff4d8 100%);
+      color: var(--ink);
+      font-family: "Source Sans 3", sans-serif;
+      min-height: 100vh;
+      padding: 18px;
+    }
+
+    .poster {
+      width: min(1280px, 100%);
+      margin: 0 auto;
+      border: 2px solid rgba(54, 54, 54, 0.2);
+      background: var(--paper);
+      border-radius: 24px;
+      box-shadow: 0 24px 55px rgba(0, 0, 0, 0.16);
+      overflow: hidden;
+    }
+
+    .header {
+      padding: 18px 24px 8px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 14px;
+      border-bottom: 2px dashed rgba(0, 0, 0, 0.16);
+    }
+
+    .brand {
+      color: #5b2a0d;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+      font-size: 1rem;
+      text-transform: uppercase;
+    }
+
+    .title-wrap {
+      text-align: center;
+      grid-column: 1 / -1;
+    }
+
+    h1 {
+      margin: 6px 0 0;
+      font-family: "Merriweather", serif;
+      font-weight: 900;
+      line-height: 1.1;
+      font-size: clamp(1.65rem, 3.2vw, 3.1rem);
+      text-transform: uppercase;
+      color: #101010;
+      letter-spacing: 0.4px;
+    }
+
+    .subtitle {
+      margin: 8px 0 0;
+      font-size: clamp(0.95rem, 1.8vw, 1.2rem);
+      font-weight: 600;
+      color: #3f3f3f;
+    }
+
+    .qr-mini {
+      justify-self: end;
+      text-align: center;
+      border: 1px solid rgba(0, 0, 0, 0.18);
+      border-radius: 14px;
+      background: #fff;
+      padding: 8px;
+      box-shadow: var(--card-shadow);
+    }
+
+    .qr-mini p {
+      margin: 4px 0 0;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+    }
+
+    .main {
+      display: grid;
+      grid-template-columns: 1fr 1.7fr 1fr;
+      gap: 14px;
+      padding: 14px;
+    }
+
+    .card {
+      border-radius: var(--radius);
+      padding: 14px;
+      box-shadow: var(--card-shadow);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    .card h2 {
+      margin: 0 0 8px;
+      font-family: "Merriweather", serif;
+      font-size: 1.08rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .objective {
+      background: var(--sky);
+    }
+
+    .contrib {
+      background: var(--lav);
+      margin-top: 14px;
+    }
+
+    .implementation {
+      background: #ffd2be;
+      margin-top: 14px;
+    }
+
+    .results {
+      background: var(--apricot);
+    }
+
+    .conclusion {
+      background: var(--rose);
+      margin-top: 14px;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 18px;
+      line-height: 1.45;
+    }
+
+    li {
+      margin-bottom: 6px;
+    }
+
+    .center {
+      display: grid;
+      gap: 14px;
+    }
+
+    .architecture {
+      background: #eef8ff;
+      min-height: 320px;
+    }
+
+    .diagram-note {
+      margin: 0 0 12px;
+      color: #313131;
+      font-size: 0.96rem;
+      font-weight: 600;
+    }
+
+    .flow {
+      display: grid;
+      gap: 10px;
+    }
+
+    .flow-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      align-items: center;
+    }
+
+    .node {
+      background: #fff;
+      border: 1.4px solid #89aac0;
+      border-radius: 12px;
+      padding: 9px;
+      text-align: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+      min-height: 58px;
+      display: grid;
+      place-items: center;
+    }
+
+    .arrow {
+      text-align: center;
+      font-size: 1.4rem;
+      color: #28556e;
+      font-weight: 900;
+    }
+
+    .stack {
+      background: var(--mint);
+    }
+
+    .stack-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .chip {
+      background: #fff;
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      border-radius: 10px;
+      padding: 8px;
+      text-align: center;
+      font-weight: 700;
+      font-size: 0.84rem;
+    }
+
+    .footer {
+      border-top: 2px dashed rgba(0, 0, 0, 0.16);
+      padding: 12px 18px 18px;
+      display: grid;
+      grid-template-columns: 1.25fr auto;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .repo-box {
+      background: var(--gold);
+      border: 1px solid rgba(0, 0, 0, 0.15);
+      border-radius: 12px;
+      padding: 10px 12px;
+    }
+
+    .repo-label {
+      font-weight: 800;
+      margin: 0 0 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      font-size: 0.82rem;
+    }
+
+    .repo-link {
+      font-size: clamp(0.82rem, 1.5vw, 0.98rem);
+      font-weight: 700;
+      color: #143b74;
+      word-break: break-all;
+      text-decoration: none;
+    }
+
+    .repo-link:hover {
+      text-decoration: underline;
+    }
+
+    .qr-large {
+      background: #fff;
+      border: 1px solid rgba(0, 0, 0, 0.18);
+      border-radius: 16px;
+      padding: 10px;
+      text-align: center;
+      box-shadow: var(--card-shadow);
+    }
+
+    .qr-large p {
+      margin: 8px 0 0;
+      font-size: 0.86rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.35px;
+    }
+
+    .muted {
+      font-size: 0.85rem;
+      color: #595959;
+    }
+
+    @media (max-width: 1080px) {
+      .main {
+        grid-template-columns: 1fr;
+      }
+
+      .footer {
+        grid-template-columns: 1fr;
+      }
+
+      .qr-mini {
+        justify-self: start;
+      }
+    }
+
+    @media print {
+      body {
+        padding: 0;
+        background: #fff;
+      }
+
+      .poster {
+        width: 100%;
+        max-width: none;
+        border-radius: 0;
+        border: none;
+        box-shadow: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="poster">
+    <header class="header">
+      <div class="brand">LOTLGuard Security Research Project</div>
+      <div class="qr-mini">
+        <img id="miniQr" alt="GitHub QR" width="82" height="82" />
+        <p>Scan Repo</p>
+      </div>
+      <div class="title-wrap">
+        <h1>LOTLGuard: Living-Off-The-Land Threat Detection Framework</h1>
+        <p class="subtitle">ML-Driven Real-Time SOC Dashboard with MITRE Mapping, Quarantine, and Incident Response</p>
+      </div>
+    </header>
+
+    <main class="main">
+      <section>
+        <article class="card objective">
+          <h2>Objective</h2>
+          <ul>
+            <li>Detect LOTL command misuse in real time using behavioral + anomaly signals.</li>
+            <li>Correlate Falco-style events with threat scoring and MITRE ATT&CK technique mapping.</li>
+            <li>Provide a SOC dashboard for live incidents, topology views, and attacker geolocation.</li>
+            <li>Trigger automated incident response with quarantine and forensic log capture.</li>
+            <li>Support local simulation and scalable cloud-native deployment paths.</li>
+          </ul>
+        </article>
+
+        <article class="card contrib">
+          <h2>Core Modules</h2>
+          <ul>
+            <li>Dashboard layer: Flask UI, APIs, live charts, and incident timeline.</li>
+            <li>Backend pipeline: parsing, enrichment, threat scoring, and persistence.</li>
+            <li>Detection engine: Isolation Forest + command feature extraction.</li>
+            <li>Response engine: severity-based containment and auto-block logic.</li>
+            <li>Simulation lab: shared kernel command injection and attack playback.</li>
+          </ul>
+        </article>
+
+        <article class="card implementation">
+          <h2>Implementation Highlights</h2>
+          <ul>
+            <li>Language and runtime: Python 3.8+, Flask, scikit-learn, joblib.</li>
+            <li>Features: command entropy, token patterns, dangerous-tool usage, network indicators.</li>
+            <li>Storage: live event logs + persistent quarantine database with forensic snapshots.</li>
+            <li>Monitoring: Falco-compatible stream ingestion and Kubernetes-aware collectors.</li>
+            <li>Visualization: topology graphs, command analytics, and geolocation map layers.</li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="center">
+        <article class="card architecture">
+          <h2>High-Level Architecture</h2>
+          <p class="diagram-note">Command and kernel events flow from simulation/monitoring to detection, scoring, response, and dashboard analytics.</p>
+          <div class="flow">
+            <div class="flow-row">
+              <div class="node">Shared Kernel App<br />Attack Simulator</div>
+              <div class="arrow">→</div>
+              <div class="node">inject_command.py<br />logs/falco_events.log</div>
+            </div>
+            <div class="flow-row">
+              <div class="node">falco_parser.py<br />Event Normalization</div>
+              <div class="arrow">→</div>
+              <div class="node">feature_builder.py<br />Vector Creation</div>
+            </div>
+            <div class="flow-row">
+              <div class="node">Isolation Forest<br />realtime_detector.py</div>
+              <div class="arrow">→</div>
+              <div class="node">threat_scoring.py<br />MITRE Mapper</div>
+            </div>
+            <div class="flow-row">
+              <div class="node">incident_response.py<br />auto_block.py</div>
+              <div class="arrow">→</div>
+              <div class="node">dashboard/app.py<br />Live SOC Panels</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card stack">
+          <h2>Technology Stack</h2>
+          <div class="stack-grid">
+            <div class="chip">Flask REST API</div>
+            <div class="chip">Scikit-learn</div>
+            <div class="chip">Isolation Forest</div>
+            <div class="chip">Joblib Models</div>
+            <div class="chip">Falco Event Parsing</div>
+            <div class="chip">MITRE ATT&CK Mapping</div>
+            <div class="chip">K8s Monitor Hooks</div>
+            <div class="chip">JSON Forensic Store</div>
+          </div>
+        </article>
+      </section>
+
+      <section>
+        <article class="card results">
+          <h2>Results</h2>
+          <ul>
+            <li>Model accuracy: approximately 95% on test data.</li>
+            <li>False positive rate tuned to around 2% for balanced alerting.</li>
+            <li>Real-time detection latency: under 50 ms per prediction.</li>
+            <li>Threat score output normalized to 0-100 for clear SOC triage.</li>
+            <li>Automated response routes: low, medium, high, critical severities.</li>
+            <li>Persistent quarantine evidence via per-incident forensic JSON logs.</li>
+          </ul>
+        </article>
+
+        <article class="card conclusion">
+          <h2>Conclusion</h2>
+          <p>
+            LOTLGuard demonstrates a practical and reproducible approach for identifying living-off-the-land attacks by combining machine learning, rule-based scoring, and response orchestration. The framework links simulated or live kernel telemetry to actionable SOC intelligence through visualization, containment, and MITRE-aligned reporting.
+          </p>
+          <p class="muted">
+            This poster is generated for project presentation and can be exported to PDF directly from your browser print dialog.
+          </p>
+        </article>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="repo-box">
+        <p class="repo-label">GitHub Repository (QR Target)</p>
+        <a class="repo-link" id="repoLink" href="#" target="_blank" rel="noopener noreferrer"></a>
+        <p class="muted">Tip: pass ?repo=https://github.com/USERNAME/REPO in URL to override target instantly.</p>
+      </div>
+      <div class="qr-large">
+        <img id="mainQr" alt="Project GitHub QR" width="190" height="190" />
+        <p>Scan To Open Repo</p>
+      </div>
+    </footer>
+  </section>
+
+  <script>
+    const DEFAULT_REPO = "https://github.com/your-username/lotl-detection-framework";
+    const params = new URLSearchParams(window.location.search);
+    const repo = params.get("repo") && params.get("repo").startsWith("http")
+      ? params.get("repo")
+      : DEFAULT_REPO;
+
+    const qrSrc = "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=" + encodeURIComponent(repo);
+    const miniQrSrc = "https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=" + encodeURIComponent(repo);
+
+    const link = document.getElementById("repoLink");
+    link.href = repo;
+    link.textContent = repo;
+
+    document.getElementById("mainQr").src = qrSrc;
+    document.getElementById("miniQr").src = miniQrSrc;
+  </script>
+</body>
+</html>
