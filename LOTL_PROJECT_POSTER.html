@@ -4,545 +4,407 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>LOTLGuard Project Poster</title>
-  <link rel="stylesheet" href="https://unpkg.com/modern-normalize@2.0.0/modern-normalize.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Spectral:wght@600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --poster-width: 594mm;
-      --poster-height: 841mm;
-      --ui-scale: 1.18;
-      --paper: #f3f8ff;
-      --ink: #0f1a27;
-      --navy: #0f2740;
-      --cyan: #2dc7e9;
-      --ice: #dff5ff;
-      --aqua: #d7fff4;
-      --peach: #ffe6cf;
-      --mist: #e9e8ff;
-      --rose: #ffe1eb;
-      --paper-2: #eef6ff;
-      --ink-soft: #31506c;
-      --card-shadow: 0 20px 36px rgba(8, 22, 40, 0.14);
-      --radius: 20px;
-      --font-body: "Sora", sans-serif;
-      --font-display: "Cormorant Garamond", serif;
+      --bg1: #0a1d30;
+      --bg2: #16466b;
+      --paper: #edf4fb;
+      --ink: #16314d;
+      --ink-soft: #375770;
+      --line: rgba(17, 70, 109, 0.22);
+      --shadow: 0 10px 24px rgba(2, 19, 36, 0.22);
+      --r: 14px;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
-    body {
+    html, body {
+      width: 100%;
+      height: 100%;
       margin: 0;
-      background:
-        radial-gradient(circle at 14% 18%, rgba(45, 199, 233, 0.24), transparent 30%),
-        radial-gradient(circle at 82% 78%, rgba(255, 161, 104, 0.2), transparent 28%),
-        linear-gradient(165deg, #041120 0%, #0a2034 44%, #153d67 100%);
+      overflow: hidden;
+      font-family: "Sora", system-ui, sans-serif;
       color: var(--ink);
-      font-family: var(--font-body);
-      font-size: calc(16px * var(--ui-scale));
-      min-height: 100vh;
-      padding: 0;
-      position: relative;
-      overflow-x: hidden;
-      text-rendering: optimizeLegibility;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-
-    body::before,
-    body::after {
-      content: "";
-      position: fixed;
-      inset: auto;
-      width: 300px;
-      height: 300px;
-      z-index: 0;
-      border-radius: 50%;
-      pointer-events: none;
-      filter: blur(48px);
-      opacity: 0.35;
-    }
-
-    body::before {
-      top: -60px;
-      right: -30px;
-      background: #67d2ff;
-    }
-
-    body::after {
-      bottom: -90px;
-      left: -50px;
-      background: #8fffcf;
+      background:
+        radial-gradient(circle at 12% 16%, rgba(67, 214, 255, 0.24), transparent 26%),
+        radial-gradient(circle at 88% 10%, rgba(255, 161, 186, 0.2), transparent 24%),
+        linear-gradient(150deg, var(--bg1), #123754 48%, var(--bg2));
     }
 
     .poster {
-      width: 100vw;
-      height: 100vh;
-      min-height: 100vh;
-      margin: 0;
-      border: 1px solid rgba(172, 223, 255, 0.55);
-      background: linear-gradient(180deg, #f8fcff 0%, var(--paper) 36%, var(--paper-2) 100%);
-      border-radius: 0;
-      box-shadow: 0 30px 74px rgba(1, 7, 18, 0.58);
+      width: min(calc(100vw - 12px), calc((100vh - 12px) * 1.777));
+      aspect-ratio: 16 / 9;
+      margin: 6px auto;
+      background: linear-gradient(180deg, #f8fbff 0%, var(--paper) 100%);
+      border-radius: 14px;
+      border: 1px solid rgba(173, 218, 246, 0.55);
+      box-shadow: 0 24px 56px rgba(2, 14, 28, 0.5);
+      display: grid;
+      grid-template-rows: 110px 1fr 68px;
       overflow: hidden;
       position: relative;
-      z-index: 1;
-    }
-
-    .file-warning {
-      display: none;
-      margin: 10px 16px 0;
-      border: 1px solid rgba(161, 38, 58, 0.25);
-      background: linear-gradient(120deg, rgba(255, 245, 247, 0.95), rgba(255, 255, 255, 0.9));
-      color: #7d1e3b;
-      border-radius: 10px;
-      padding: 8px 10px;
-      font-size: 0.78rem;
-      font-weight: 600;
-      line-height: 1.35;
-    }
-
-    body.file-protocol .file-warning {
-      display: block;
     }
 
     .poster::before,
     .poster::after {
       content: "";
       position: absolute;
-      inset: auto;
-      width: 120%;
-      height: 84px;
       left: -10%;
-      z-index: 0;
+      width: 120%;
+      height: 48px;
+      transform: rotate(-6deg);
       pointer-events: none;
-      transform: rotate(-8deg);
-      border-radius: 18px;
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>LOTLGuard Project Poster</title>
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-      <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Spectral:wght@600;700&display=swap" rel="stylesheet" />
-      <style>
-        :root {
-          --bg-1: #081a2d;
-          --bg-2: #133b60;
-          --paper: #ecf3fb;
-          --ink: #13283f;
-          --ink-soft: #37536d;
-          --card-border: rgba(15, 74, 116, 0.2);
-          --radius: 14px;
-          --shadow: 0 10px 26px rgba(3, 20, 38, 0.2);
-        }
+      z-index: 0;
+      border-radius: 12px;
+    }
 
-        * {
-          box-sizing: border-box;
-        }
+    .poster::before {
+      top: 49%;
+      background: linear-gradient(90deg, rgba(188, 25, 61, 0.16), rgba(255, 255, 255, 0.07));
+    }
 
-        html,
-        body {
-          margin: 0;
-          width: 100%;
-          height: 100%;
-          overflow: hidden;
-          font-family: "Sora", sans-serif;
-          color: var(--ink);
-          background:
-            radial-gradient(circle at 10% 20%, rgba(61, 206, 255, 0.2), transparent 26%),
-            radial-gradient(circle at 90% 10%, rgba(255, 166, 191, 0.16), transparent 24%),
-            linear-gradient(145deg, var(--bg-1) 0%, #0e2e4b 42%, var(--bg-2) 100%);
-        }
+    .poster::after {
+      top: 75%;
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0.22), rgba(196, 33, 68, 0.12));
+    }
 
-        .poster {
-          width: min(calc(100vw - 12px), calc((100vh - 12px) * 1.777));
-          aspect-ratio: 16 / 9;
-          margin: 6px auto;
-          background: linear-gradient(180deg, #f4f8fc 0%, var(--paper) 100%);
-          border-radius: 14px;
-          border: 1px solid rgba(168, 214, 242, 0.5);
-          box-shadow: 0 24px 54px rgba(2, 14, 28, 0.45);
-          overflow: hidden;
-          display: grid;
-          grid-template-rows: 112px 1fr 72px;
-          position: relative;
-        }
+    .header {
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 170px 1fr 106px;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 12px;
+      background: linear-gradient(180deg, #ffffff, #eef5fc);
+      border-bottom: 1px solid rgba(79, 129, 168, 0.24);
+    }
 
-        .poster::before,
-        .poster::after {
-          content: "";
-          position: absolute;
-          width: 120%;
-          height: 52px;
-          left: -10%;
-          transform: rotate(-6deg);
-          pointer-events: none;
-          z-index: 0;
-          border-radius: 12px;
-        }
+    .logo {
+      width: 162px;
+      display: block;
+      background: #fff;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: 8px;
+      padding: 3px 4px;
+    }
 
-        .poster::before {
-          top: 46%;
-          background: linear-gradient(90deg, rgba(186, 25, 60, 0.16), rgba(255, 255, 255, 0.08));
-        }
+    .title-wrap { text-align: center; }
 
-        .poster::after {
-          top: 73%;
-          background: linear-gradient(90deg, rgba(255, 255, 255, 0.22), rgba(194, 35, 68, 0.12));
-        }
+    .school {
+      margin: 0;
+      color: #8b1b4e;
+      font-size: 10px;
+      letter-spacing: 0.64px;
+      text-transform: uppercase;
+      font-weight: 800;
+    }
 
-        .header {
-          z-index: 1;
-          display: grid;
-          grid-template-columns: 180px 1fr 108px;
-          gap: 12px;
-          align-items: center;
-          padding: 8px 12px;
-          background: linear-gradient(180deg, #ffffff, #eef5fc);
-          border-bottom: 1px solid rgba(79, 129, 168, 0.2);
-        }
+    .title {
+      margin: 4px 0 0;
+      font-family: "Spectral", serif;
+      color: #16324d;
+      font-size: clamp(30px, 2.55vw, 40px);
+      line-height: 1.03;
+      text-transform: uppercase;
+      letter-spacing: 0.25px;
+      font-weight: 700;
+    }
 
-        .logo-box {
-          align-self: start;
-        }
+    .subtitle {
+      margin: 4px 0 0;
+      color: #335872;
+      font-size: 12px;
+      font-weight: 600;
+    }
 
-        .logo {
-          width: 168px;
-          max-width: 100%;
-          display: block;
-          border-radius: 8px;
-          background: #fff;
-          padding: 3px 4px;
-          border: 1px solid rgba(0, 0, 0, 0.08);
-        }
+    .qr-box {
+      justify-self: end;
+      text-align: center;
+      background: #fff;
+      border: 1px solid rgba(17, 72, 110, 0.22);
+      border-radius: 10px;
+      padding: 5px;
+      box-shadow: var(--shadow);
+    }
 
-        .title-block {
-          text-align: center;
-          align-self: center;
-        }
+    .qr {
+      width: 80px;
+      height: 80px;
+      display: block;
+      border-radius: 6px;
+      border: 1px solid rgba(8, 46, 72, 0.14);
+    }
 
-        .school-line {
-          margin: 0;
-          font-size: 10px;
-          text-transform: uppercase;
-          letter-spacing: 0.65px;
-          color: #8b1b4e;
-          font-weight: 800;
-        }
+    .qr-label {
+      margin: 3px 0 0;
+      color: #174d79;
+      font-size: 9px;
+      letter-spacing: 0.42px;
+      text-transform: uppercase;
+      font-weight: 800;
+    }
 
-        .title {
-          margin: 4px 0 0;
-          font-family: "Spectral", serif;
-          text-transform: uppercase;
-          font-weight: 700;
-          line-height: 1.02;
-          letter-spacing: 0.3px;
-          color: #16324d;
-          font-size: clamp(30px, 2.6vw, 40px);
-        }
+    .main {
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 28% 44% 28%;
+      gap: 10px;
+      padding: 10px;
+      overflow: hidden;
+    }
 
-        .subtitle {
-          margin: 4px 0 0;
-          font-size: 12px;
-          color: #33556f;
-          font-weight: 600;
-        }
+    .col {
+      display: grid;
+      gap: 8px;
+      align-content: start;
+      min-height: 0;
+    }
 
-        .qr-box {
-          justify-self: end;
-          text-align: center;
-          background: #ffffff;
-          border: 1px solid rgba(20, 74, 111, 0.2);
-          border-radius: 10px;
-          padding: 5px;
-          box-shadow: var(--shadow);
-        }
+    .card {
+      position: relative;
+      border-radius: var(--r);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      background: #fff;
+      padding: 8px 10px;
+      overflow: hidden;
+    }
 
-        .qr {
-          width: 82px;
-          height: 82px;
-          display: block;
-          border-radius: 6px;
-          border: 1px solid rgba(8, 45, 71, 0.12);
-        }
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #2bbfd8, #65d7be);
+    }
 
-        .qr-label {
-          margin: 3px 0 0;
-          font-size: 9px;
-          font-weight: 800;
-          text-transform: uppercase;
-          color: #194d78;
-          letter-spacing: 0.4px;
-        }
+    .objective { background: linear-gradient(160deg, #e8f8ff, #d9effd); }
+    .modules { background: linear-gradient(160deg, #efecff, #e6e2fb); }
+    .implementation { background: linear-gradient(160deg, #ffedd9, #fce1c2); }
+    .results { background: linear-gradient(160deg, #fff5e4, #f9e8cb); }
+    .conclusion { background: linear-gradient(160deg, #ffeaf1, #f8d9e6); }
+    .center-main { background: linear-gradient(180deg, #e7f5ff, #d9ecfa); }
 
-        .main {
-          z-index: 1;
-          display: grid;
-          grid-template-columns: 28% 44% 28%;
-          gap: 10px;
-          padding: 10px;
-          overflow: hidden;
-        }
+    .h {
+      margin: 0 0 5px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.54px;
+      font-weight: 800;
+      color: #173f5f;
+    }
 
-        .col {
-          display: grid;
-          gap: 8px;
-          align-content: start;
-          min-height: 0;
-        }
+    ul {
+      margin: 0;
+      padding-left: 15px;
+      font-size: 10px;
+      line-height: 1.35;
+      color: #21415b;
+      font-weight: 500;
+    }
 
-        .card {
-          background: #ffffff;
-          border: 1px solid var(--card-border);
-          border-radius: var(--radius);
-          box-shadow: var(--shadow);
-          padding: 8px 10px;
-          position: relative;
-          overflow: hidden;
-        }
+    li { margin-bottom: 3px; }
 
-        .card::before {
-          content: "";
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          height: 4px;
-          background: linear-gradient(90deg, #26bdd9, #62d3be);
-        }
+    .arch-note {
+      margin: 0 0 6px;
+      font-size: 10px;
+      font-weight: 600;
+      color: #2b5370;
+    }
 
-        .objective { background: linear-gradient(160deg, #e6f7ff, #d8eefc); }
-        .modules { background: linear-gradient(160deg, #efecff, #e5e1fb); }
-        .implementation { background: linear-gradient(160deg, #ffedd8, #fbe0c2); }
-        .results { background: linear-gradient(160deg, #fff5e2, #f9e8ca); }
-        .conclusion { background: linear-gradient(160deg, #ffeaf1, #f8d9e5); }
-        .center-main { background: linear-gradient(180deg, #e6f5ff, #d8ecfa); }
+    .arch-wrap {
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid rgba(15, 57, 88, 0.22);
+      background: #fff;
+    }
 
-        .h {
-          margin: 0 0 5px;
-          font-size: 12px;
-          text-transform: uppercase;
-          letter-spacing: 0.55px;
-          font-weight: 800;
-          color: #163b5a;
-        }
+    .arch-image {
+      width: 100%;
+      height: 316px;
+      object-fit: cover;
+      display: block;
+    }
 
-        ul {
-          margin: 0;
-          padding-left: 15px;
-          font-size: 10px;
-          line-height: 1.35;
-          color: #203f59;
-          font-weight: 500;
-        }
+    .stack-grid {
+      margin-top: 6px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 6px;
+    }
 
-        li { margin-bottom: 3px; }
+    .chip {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 10px;
+      font-weight: 700;
+      color: #184666;
+      background: rgba(255, 255, 255, 0.94);
+      border: 1px solid rgba(16, 65, 99, 0.2);
+      border-radius: 8px;
+      padding: 4px 6px;
+    }
 
-        .arch-note {
-          margin: 0 0 6px;
-          font-size: 10px;
-          color: #29506d;
-          font-weight: 600;
-        }
+    .chip img {
+      width: 13px;
+      height: 13px;
+      flex: 0 0 13px;
+      object-fit: contain;
+    }
 
-        .arch-wrap {
-          border-radius: 10px;
-          border: 1px solid rgba(14, 56, 86, 0.2);
-          overflow: hidden;
-          background: #ffffff;
-        }
+    .footer {
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 8px;
+      border-top: 1px solid rgba(78, 128, 168, 0.24);
+      background: linear-gradient(180deg, #eef6fd, #e4eef9);
+      padding: 10px 14px;
+    }
 
-        .arch-image {
-          width: 100%;
-          height: 315px;
-          display: block;
-          object-fit: cover;
-        }
+    .repo {
+      font-size: 11px;
+      font-weight: 700;
+      color: #214861;
+      line-height: 1.4;
+    }
 
-        .stack-grid {
-          margin-top: 6px;
-          display: grid;
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-          gap: 6px;
-        }
+    .repo a {
+      color: #0f4b7a;
+      text-decoration: none;
+      font-weight: 800;
+    }
 
-        .chip {
-          background: rgba(255, 255, 255, 0.92);
-          border: 1px solid rgba(17, 63, 96, 0.2);
-          border-radius: 8px;
-          padding: 4px 6px;
-          font-size: 10px;
-          color: #184464;
-          font-weight: 700;
-          display: flex;
-          align-items: center;
-          gap: 5px;
-        }
+    .repo a:hover { text-decoration: underline; }
 
-        .chip img {
-          width: 13px;
-          height: 13px;
-          object-fit: contain;
-          flex: 0 0 13px;
-        }
+    .note {
+      font-size: 10px;
+      color: #4a6780;
+      font-weight: 600;
+    }
 
-        .footer {
-          z-index: 1;
-          border-top: 1px solid rgba(79, 129, 168, 0.22);
-          background: linear-gradient(180deg, #eef6fd, #e3eef9);
-          display: grid;
-          grid-template-columns: 1fr auto;
-          align-items: center;
-          gap: 10px;
-          padding: 10px 14px;
-        }
+    @media (max-width: 1100px) {
+      html, body { overflow: auto; }
+      .poster {
+        width: min(98vw, 980px);
+        height: auto;
+        aspect-ratio: auto;
+        margin: 10px auto;
+      }
+      .header { grid-template-columns: 1fr; }
+      .qr-box { justify-self: start; }
+      .main { grid-template-columns: 1fr; }
+      .arch-image { height: auto; }
+      .footer { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <section class="poster">
+    <header class="header">
+      <img class="logo" src="amrita.png" alt="Amrita Vishwa Vidyapeetham" />
 
-        .repo {
-          font-size: 11px;
-          color: #204760;
-          font-weight: 700;
-          line-height: 1.4;
-        }
+      <div class="title-wrap">
+        <p class="school">School of Computing | Cybersecurity Project Showcase</p>
+        <h1 class="title">LOTLGuard: Living-Off-The-Land Threat Detection Framework</h1>
+        <p class="subtitle">ML-Driven Real-Time SOC Dashboard with MITRE Mapping, Quarantine, and Incident Response</p>
+      </div>
 
-        .repo a {
-          color: #0f4b7a;
-          text-decoration: none;
-          font-weight: 800;
-        }
+      <a class="qr-box" href="https://github.com/Kanchi-karthik/LOTL" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository">
+        <img class="qr" src="https://api.qrserver.com/v1/create-qr-code/?size=260x260&data=https%3A%2F%2Fgithub.com%2FKanchi-karthik%2FLOTL" alt="GitHub repository QR code" />
+        <p class="qr-label">Scan Repo</p>
+      </a>
+    </header>
 
-        .repo a:hover { text-decoration: underline; }
+    <main class="main">
+      <section class="col">
+        <article class="card objective">
+          <h2 class="h">Objective</h2>
+          <ul>
+            <li>Detect LOTL command misuse in real time with behavioral and anomaly signals.</li>
+            <li>Correlate events with threat scoring and MITRE ATT&CK mapping.</li>
+            <li>Provide SOC dashboard for incidents, topology, and attacker geolocation.</li>
+            <li>Trigger automated response with quarantine and forensic capture.</li>
+          </ul>
+        </article>
 
-        .small-note {
-          font-size: 10px;
-          color: #4a6680;
-          font-weight: 600;
-        }
+        <article class="card modules">
+          <h2 class="h">Core Modules</h2>
+          <ul>
+            <li>Dashboard: Flask UI, APIs, live charts, incident timeline.</li>
+            <li>Backend: parsing, enrichment, threat scoring, persistence.</li>
+            <li>Detection: Isolation Forest with command feature extraction.</li>
+            <li>Response: severity-based containment and auto-block logic.</li>
+          </ul>
+        </article>
 
-        @media (max-width: 1100px) {
-          html, body { overflow: auto; }
-          .poster {
-            width: min(98vw, 980px);
-            aspect-ratio: auto;
-            height: auto;
-            margin: 10px auto;
-          }
-          .header { grid-template-columns: 1fr; }
-          .qr-box { justify-self: start; }
-          .main { grid-template-columns: 1fr; }
-          .arch-image { height: auto; }
-          .footer { grid-template-columns: 1fr; }
-        }
-      </style>
-    </head>
-    <body>
-      <section class="poster">
-        <header class="header">
-          <div class="logo-box">
-            <img class="logo" src="amrita.png" alt="Amrita Vishwa Vidyapeetham" />
-          </div>
-
-          <div class="title-block">
-            <p class="school-line">School of Computing | Cybersecurity Project Showcase</p>
-            <h1 class="title">LOTLGuard: Living-Off-The-Land Threat Detection Framework</h1>
-            <p class="subtitle">ML-Driven Real-Time SOC Dashboard with MITRE Mapping, Quarantine, and Incident Response</p>
-          </div>
-
-          <a class="qr-box" href="https://github.com/Kanchi-karthik/LOTL" target="_blank" rel="noopener noreferrer" aria-label="Open GitHub repository">
-            <img class="qr" src="https://api.qrserver.com/v1/create-qr-code/?size=260x260&data=https%3A%2F%2Fgithub.com%2FKanchi-karthik%2FLOTL" alt="GitHub repository QR code" />
-            <p class="qr-label">Scan Repo</p>
-          </a>
-        </header>
-
-        <main class="main">
-          <section class="col">
-            <article class="card objective">
-              <h2 class="h">Objective</h2>
-              <ul>
-                <li>Detect LOTL command misuse in real time with behavioral and anomaly signals.</li>
-                <li>Correlate events with threat scoring and MITRE ATT&CK mapping.</li>
-                <li>Provide SOC dashboard for incidents, topology, and attacker geolocation.</li>
-                <li>Trigger automated response with quarantine and forensic capture.</li>
-              </ul>
-            </article>
-
-            <article class="card modules">
-              <h2 class="h">Core Modules</h2>
-              <ul>
-                <li>Dashboard: Flask UI, APIs, live charts, incident timeline.</li>
-                <li>Backend: parsing, enrichment, threat scoring, persistence.</li>
-                <li>Detection: Isolation Forest with command feature extraction.</li>
-                <li>Response: severity-based containment and auto-block logic.</li>
-              </ul>
-            </article>
-
-            <article class="card implementation">
-              <h2 class="h">Implementation Highlights</h2>
-              <ul>
-                <li>Python 3.8+, Flask, scikit-learn, joblib stack.</li>
-                <li>Features include entropy, risky tools, paths, network indicators.</li>
-                <li>Persistent quarantine logs and forensic snapshots.</li>
-                <li>Falco-compatible ingestion with Kubernetes monitoring hooks.</li>
-              </ul>
-            </article>
-          </section>
-
-          <section class="col">
-            <article class="card center-main">
-              <h2 class="h">System Architecture and Infrastructure</h2>
-              <p class="arch-note">Organized pipeline view from event generation to SOC response and containment.</p>
-              <div class="arch-wrap">
-                <img class="arch-image" src="poster_assets/lotl_architecture_wide.svg" alt="LOTLGuard architecture overview" />
-              </div>
-
-              <div class="stack-grid">
-                <div class="chip"><img src="https://cdn.simpleicons.org/flask/000000" alt="Flask" />Flask REST API</div>
-                <div class="chip"><img src="https://cdn.simpleicons.org/scikitlearn/F7931E" alt="Scikit-learn" />Scikit-learn</div>
-                <div class="chip"><img src="https://cdn.simpleicons.org/python/3776AB" alt="Python" />Isolation Forest</div>
-                <div class="chip"><img src="https://cdn.simpleicons.org/kubernetes/326CE5" alt="Kubernetes" />K8s Monitor</div>
-                <div class="chip"><img src="https://cdn.simpleicons.org/json/000000" alt="JSON" />Forensic JSON</div>
-                <div class="chip"><img src="https://cdn.simpleicons.org/github/181717" alt="GitHub" />Project Repo</div>
-              </div>
-            </article>
-          </section>
-
-          <section class="col">
-            <article class="card results">
-              <h2 class="h">Results</h2>
-              <ul>
-                <li>Model accuracy around 95% on controlled test data.</li>
-                <li>False positives tuned near 2% for balanced alerting.</li>
-                <li>Detection latency under 50 ms per prediction.</li>
-                <li>Threat score normalized to 0 to 100 for SOC triage.</li>
-                <li>Automated responses across low to critical severity.</li>
-              </ul>
-            </article>
-
-            <article class="card conclusion">
-              <h2 class="h">Conclusion</h2>
-              <ul>
-                <li>LOTLGuard delivers practical and reproducible LOTL threat detection.</li>
-                <li>Combines ML, rules, and response orchestration in one workflow.</li>
-                <li>Designed for clear SOC visibility and rapid incident containment.</li>
-                <li>Ready for presentation and demo screenshots.</li>
-              </ul>
-            </article>
-          </section>
-        </main>
-
-        <footer class="footer">
-          <div class="repo">
-            GitHub Repository: <a href="https://github.com/Kanchi-karthik/LOTL" target="_blank" rel="noopener noreferrer">https://github.com/Kanchi-karthik/LOTL</a>
-          </div>
-          <div class="small-note">Poster optimized for one-screen screenshot view</div>
-        </footer>
+        <article class="card implementation">
+          <h2 class="h">Implementation Highlights</h2>
+          <ul>
+            <li>Python 3.8+, Flask, scikit-learn, joblib stack.</li>
+            <li>Features include entropy, risky tools, paths, network indicators.</li>
+            <li>Persistent quarantine logs and forensic snapshots.</li>
+            <li>Falco-compatible ingestion with Kubernetes monitoring hooks.</li>
+          </ul>
+        </article>
       </section>
-    </body>
-    </html>
+
+      <section class="col">
+        <article class="card center-main">
+          <h2 class="h">System Architecture and Infrastructure</h2>
+          <p class="arch-note">Organized pipeline view from event generation to SOC response and containment.</p>
+          <div class="arch-wrap">
+            <img class="arch-image" src="poster_assets/lotl_architecture_wide.svg" alt="LOTLGuard architecture overview" />
+          </div>
+
+          <div class="stack-grid">
+            <div class="chip"><img src="https://cdn.simpleicons.org/flask/000000" alt="Flask" />Flask REST API</div>
+            <div class="chip"><img src="https://cdn.simpleicons.org/scikitlearn/F7931E" alt="Scikit-learn" />Scikit-learn</div>
+            <div class="chip"><img src="https://cdn.simpleicons.org/python/3776AB" alt="Python" />Isolation Forest</div>
+            <div class="chip"><img src="https://cdn.simpleicons.org/kubernetes/326CE5" alt="Kubernetes" />K8s Monitor</div>
+            <div class="chip"><img src="https://cdn.simpleicons.org/json/000000" alt="JSON" />Forensic JSON</div>
+            <div class="chip"><img src="https://cdn.simpleicons.org/github/181717" alt="GitHub" />Project Repo</div>
+          </div>
+        </article>
+      </section>
+
+      <section class="col">
+        <article class="card results">
+          <h2 class="h">Results</h2>
+          <ul>
+            <li>Model accuracy around 95% on controlled test data.</li>
+            <li>False positives tuned near 2% for balanced alerting.</li>
+            <li>Detection latency under 50 ms per prediction.</li>
+            <li>Threat score normalized to 0 to 100 for SOC triage.</li>
+            <li>Automated responses across low to critical severity.</li>
+          </ul>
+        </article>
+
+        <article class="card conclusion">
+          <h2 class="h">Conclusion</h2>
+          <ul>
+            <li>LOTLGuard delivers practical and reproducible LOTL threat detection.</li>
+            <li>Combines ML, rules, and response orchestration in one workflow.</li>
+            <li>Designed for clear SOC visibility and rapid incident containment.</li>
+            <li>Ready for presentation and demo screenshots.</li>
+          </ul>
+        </article>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="repo">
+        GitHub Repository: <a href="https://github.com/Kanchi-karthik/LOTL" target="_blank" rel="noopener noreferrer">https://github.com/Kanchi-karthik/LOTL</a>
+      </div>
+      <div class="note">Optimized for one-screen screenshot capture</div>
+    </footer>
+  </section>
+</body>
+</html>
