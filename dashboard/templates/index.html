@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOTLGuard | SOC Dashboard</title>
+    <!-- Google Fonts: Inter and JetBrains Mono -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Leaflet mapping -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <link rel="stylesheet" href="/static/css/style.css">
+    <style>
+        /* Small layout fixes for index.html compatibility */
+        .sidebar { transition: transform 0.3s ease; }
+        @media (max-width: 1024px) {
+            .sidebar { position: fixed; left: -260px; height: 100vh !important; }
+            .sidebar.active { left: 0; }
+            .sidebar-toggle { display: block !important; position: fixed; top: 15px; left: 15px; z-index: 1001; background: white; border: 1px solid var(--panel-border); padding: 8px 12px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); cursor: pointer; }
+        }
+        .sidebar-toggle { display: none; }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Mobile Toggle Button -->
+        <button class="sidebar-toggle" id="sidebar-toggle">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar" id="sidebar">
+            <div class="sidebar-top-action" style="display:flex; justify-content:flex-end; margin-bottom: 0.5rem;">
+                <button id="sidebar-collapse-btn" class="glass-panel" style="border:none; background:transparent; cursor:pointer; color:var(--text-muted); font-size:1.1rem; width:36px; height:36px; border-radius:10px; display:flex; align-items:center; justify-content:center; transition: 0.2s;">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+            </div>
+            <div class="logo">
+                <div style="background: var(--accent-blue); padding: 8px; border-radius: 12px; color: white;">
+                    <i class="fa-solid fa-shield-halved fa-lg"></i>
+                </div>
+                <h2>LOTLGuard <span style="font-size:0.6rem; opacity:0.5;">V2.1</span></h2>
+            </div>
+            <ul class="nav-links">
+                <li class="nav-item active" data-target="view-dashboard"><i class="fa-solid fa-gauge-high"></i> <span class="nav-text">SOC Overview</span></li>
+                <li class="nav-item" data-target="view-map"><i class="fa-solid fa-earth-americas"></i> <span class="nav-text">Attacker Map</span></li>
+                <li class="nav-item" data-target="view-users"><i class="fa-solid fa-user-gear"></i> <span class="nav-text">User Topology</span></li>
+                <li class="nav-item" data-target="view-quarantine"><i class="fa-solid fa-biohazard"></i> <span class="nav-text">Quarantine Manager</span></li>
+                <li class="nav-item" data-target="view-search"><i class="fa-solid fa-terminal"></i> <span class="nav-text">Omni Search</span></li>
+                <li class="nav-item" data-target="view-behavioral"><i class="fa-solid fa-chart-line"></i> <span class="nav-text">Behavioral</span></li>
+                <li class="nav-item" data-target="view-history"><i class="fa-solid fa-clock-rotate-left"></i> <span class="nav-text">History</span></li>
+                <li class="nav-item" data-target="view-architecture"><i class="fa-solid fa-circle-info"></i> <span class="nav-text">Intelligence</span></li>
+            </ul>
+            
+            <div id="sidebar-footer" style="margin-top: auto; padding: 15px; background: #F1F5F9; border-radius: 10px; font-size: 0.75rem;">
+                <p id="powered-by" style="color:var(--text-muted); margin-bottom: 5px;">Powered by <strong>eBPF & ML</strong></p>
+                <div style="display:flex; align-items:center; gap:5px; color:var(--accent-green)">
+                    <span class="pulse-dot" style="width:6px; height:6px;"></span> <span class="nav-text">Active Monitoring</span>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="top-bar glass-panel">
+                <div class="title">
+                    <h1 id="page-title">SOC Overview</h1>
+                    <p style="font-weight: 500; opacity: 0.7;">Runtime Advanced Threat Detection & Incident Response</p>
+                </div>
+                <div style="display:flex; align-items:center; gap:12px;">
+                    <button id="btn-reset" class="glass-panel" style="padding: 10px 15px; cursor:pointer; color:var(--accent-red); display:flex; gap:8px; align-items:center; font-weight:600; font-size:0.8rem; border:1px solid var(--panel-border);">
+                        <i class="fa-solid fa-trash-can"></i> Reset Stats
+                    </button>
+                    <button id="btn-refresh" class="glass-panel" style="padding: 10px 15px; cursor:pointer; color:var(--accent-blue); display:flex; gap:8px; align-items:center; font-weight:600; font-size:0.8rem; border:1px solid var(--panel-border);">
+                        <i class="fa-solid fa-rotate"></i> Refresh
+                    </button>
+                    <div class="status-indicator">
+                        <span class="pulse-dot"></span> Node: <span id="node-name" style="color:var(--text-bright)">minikube-cluster</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- VIEW: BEHAVIORAL ANALYTICS -->
+            <section id="view-behavioral" class="view-section hidden">
+                <div class="glass-panel p-4 mb-4">
+                    <h2 class="text-xl font-bold mb-4"><i class="fa-solid fa-chart-area mr-2"></i>Behavioral Analytics</h2>
+                    <div class="dashboard-grid-v2">
+                        <div class="glass-panel p-4" style="background: rgba(15, 23, 42, 0.4);">
+                            <h3 class="text-sm font-semibold mb-3 text-blue-400">THREAT LEVEL TREND (LAST 1H)</h3>
+                            <canvas id="threatTrend" width="400" height="200"></canvas>
+                        </div>
+                        <div class="glass-panel p-4" style="background: rgba(15, 23, 42, 0.4);">
+                            <h3 class="text-sm font-semibold mb-3 text-emerald-400">COMMAND FREQUENCY ANALYSIS</h3>
+                            <canvas id="cmdFreq" width="400" height="200"></canvas>
+                        </div>
+                    </div>
+                    <div class="mt-6 glass-panel p-4">
+                        <h3 class="text-sm font-semibold mb-3 text-purple-400">ANOMALY SCORE HEATMAP</h3>
+                        <div id="anomalyHeatmap" style="height: 100px; display: flex; gap: 2px; align-items: flex-end;">
+                            <!-- JS generated blocks -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- VIEW: DASHBOARD -->
+            <div id="view-dashboard" class="view-section active">
+                <!-- KPI Section -->
+                <div class="widget-row" style="margin-bottom: 1.5rem;">
+                    <div class="kpi-card glass-panel">
+                        <i class="fa-solid fa-boxes-stacked bg-soft-blue"></i>
+                        <div class="kpi-info">
+                            <h3>Monitored Pods</h3>
+                            <h2 id="kpi-pods">...</h2>
+                        </div>
+                    </div>
+                    <div class="kpi-card glass-panel">
+                        <i class="fa-solid fa-user-ninja bg-soft-purple" style="background:rgba(139, 92, 246, 0.1); color:#8B5CF6"></i>
+                        <div class="kpi-info">
+                            <h3>Active Attackers</h3>
+                            <h2 id="kpi-attackers">...</h2>
+                        </div>
+                    </div>
+                    <div class="kpi-card glass-panel">
+                        <i class="fa-solid fa-triangle-exclamation bg-soft-red"></i>
+                        <div class="kpi-info">
+                            <h3>Security Anomalies</h3>
+                            <h2 id="kpi-anomalies" class="text-red">...</h2>
+                        </div>
+                    </div>
+                    <div class="kpi-card glass-panel">
+                        <i class="fa-solid fa-shield-virus bg-soft-green"></i>
+                        <div class="kpi-info">
+                            <h3>Assets Isolated</h3>
+                            <h2 id="kpi-quarantined">...</h2>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-grid-v2">
+                    <!-- Alert Stream -->
+                    <div class="glass-panel">
+                        <div class="section-header">
+                            <h3><i class="fa-solid fa-tower-broadcast text-red"></i> Real-time Incident Feed</h3>
+                            <span class="badge badge-anomaly" id="live-indicator">LIVE</span>
+                        </div>
+                        <div class="alert-feed" id="alert-feed"></div>
+                    </div>
+
+                    <!-- MITRE Matrix -->
+                    <div class="glass-panel">
+                        <div class="section-header">
+                            <h3><i class="fa-solid fa-chess-board"></i> MITRE ATT&CK Mapping</h3>
+                        </div>
+                        <div class="mitre-grid" id="mitre-matrix"></div>
+                    </div>
+
+                    <!-- Pod Heatmap -->
+                    <div class="glass-panel">
+                        <div class="section-header">
+                            <h3><i class="fa-solid fa-gauge-high"></i> Resource Threat Matrix</h3>
+                        </div>
+                        <div class="heatmap-list" id="pod-heatmap"></div>
+                    </div>
+
+                    <!-- Attack Timeline -->
+                    <div class="glass-panel">
+                        <div class="section-header">
+                            <h3><i class="fa-solid fa-list-ul"></i> Forensic Timeline</h3>
+                        </div>
+                        <div class="table-container" style="max-height: 400px; overflow-y: auto;">
+                            <table id="events-table">
+                                <thead>
+                                    <tr>
+                                        <th>Time</th>
+                                        <th>Attacker</th>
+                                        <th>Pod</th>
+                                        <th>Action</th>
+                                        <th>Risk</th>
+                                        <th>Mitigate</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="events-table-body"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="view-map" class="view-section hidden">
+                <div class="glass-panel" style="padding: 1.5rem; height: 700px;">
+                    <div class="section-header" style="border:none; padding:0 0 1.5rem 0;">
+                        <h3><i class="fa-solid fa-globe text-blue"></i> Global Threat Intelligence Map</h3>
+                    </div>
+                    <div id="attacker-map" style="height: 600px; border-radius: 12px; border: 1px solid var(--panel-border);"></div>
+                </div>
+            </div>
+
+            <!-- VIEW: USER TOPOLOGY -->
+            <div id="view-users" class="view-section hidden">
+                <div class="glass-panel" style="padding: 1.5rem; height: 700px; display:flex; flex-direction:column;">
+                    <div class="section-header">
+                        <h3><i class="fa-solid fa-network-wired"></i> Cluster Resource Topology</h3>
+                    </div>
+                    <div style="flex:1; display:flex; align-items:flex-end; justify-content:center; position:relative; padding-bottom:0.5rem;">
+                         <canvas id="topology" width="800" height="500" style="max-width:100%; height:auto; display:block;"></canvas>
+                         <div id="topology-info" style="position:absolute; top:20px; right:20px; width:200px; font-size:0.75rem;" class="glass-panel p-3 hidden"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIEW: QUARANTINE -->
+            <div id="view-quarantine" class="view-section hidden">
+                <div class="glass-panel" style="padding: 1.5rem;">
+                    <div class="section-header">
+                        <h3><i class="fa-solid fa-vault"></i> Secure Isolation Vault</h3>
+                    </div>
+                    <div class="table-container mt-4">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Target Asset</th>
+                                    <th>Isolation Timestamp</th>
+                                    <th>Policy Applied</th>
+                                    <th>IR Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="quarantine-pods-body"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIEW: SEARCH & MANUAL SIMULATOR -->
+            <div id="view-search" class="view-section hidden">
+                <div class="dashboard-grid-v2">
+                    <!-- Manual Simulator Card -->
+                    <div class="glass-panel" style="padding: 2rem;">
+                        <h3 class="text-blue" style="margin-bottom: 1.5rem;"><i class="fa-solid fa-vial-virus"></i> Manual Threat Simulator</h3>
+                        <div style="display:flex; flex-direction:column; gap: 1rem;">
+                            <div>
+                                <label style="display:block; font-size: 0.75rem; color:var(--text-muted); margin-bottom: 5px;">Target Pod Name</label>
+                                <input type="text" id="pod-name" placeholder="e.g. login-service-pod" style="width:100%; padding: 10px; border-radius: 8px; border: 1px solid var(--panel-border); background: #F8FAFC;">
+                            </div>
+                            <div>
+                                <label style="display:block; font-size: 0.75rem; color:var(--text-muted); margin-bottom: 5px;">Attack Command</label>
+                                <input type="text" id="attack-command" placeholder="e.g. cat /etc/shadow" style="width:100%; padding: 10px; border-radius: 8px; border: 1px solid var(--panel-border); background: #F8FAFC;">
+                            </div>
+                            <button id="btn-attack" style="background:var(--accent-red); color:white; border:none; padding:12px; border-radius:8px; font-weight:700; cursor:pointer; transition:0.2s;">
+                                SYNC ATTACK TO KERNEL
+                            </button>
+                        </div>
+                        
+                        <!-- Real-time Simulation Result -->
+                        <div id="simulation-analysis" class="hidden" style="margin-top: 1.5rem; padding: 1rem; background:rgba(239, 68, 68, 0.05); border: 1px dashed var(--accent-red); border-radius: 8px;">
+                            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 8px;">
+                                <h4 style="font-size: 0.75rem; color: var(--accent-red); font-weight: 700;">SOC ANALYSIS RESULT</h4>
+                                <span id="sim-status" style="font-size: 0.65rem; padding: 2px 8px; border-radius: 4px; background:var(--accent-red); color:white;">ANALYZING...</span>
+                            </div>
+                            <div id="sim-details" style="font-size: 0.8rem; line-height: 1.4;">
+                                <p>Detected Risk: <strong id="sim-risk">-</strong></p>
+                                <p>Technique: <strong id="sim-technique">-</strong></p>
+                                <p style="font-size:0.7rem; color:var(--text-muted); margin-top:5px;">Check <strong>Omni Search</strong> for full forensic trace.</p>
+                            </div>
+                        </div>
+
+                        <p style="margin-top: 1rem; font-size: 0.7rem; color: var(--text-muted);">
+                            <i class="fa-solid fa-circle-info"></i> This simulates a live exploit injection directly into the specified container's process group.
+                        </p>
+                    </div>
+
+                    <!-- Omni Search Card -->
+                    <div class="glass-panel" style="padding: 2rem;">
+                        <h3 class="text-blue" style="margin-bottom: 1.5rem;"><i class="fa-solid fa-magnifying-glass"></i> Omni Forensic Search</h3>
+                        <div style="display:flex; gap: 15px; margin-bottom: 1.5rem; background: #F1F5F9; padding: 10px 20px; border-radius: 12px; align-items: center; border: 1px solid var(--panel-border);">
+                            <i class="fa-solid fa-magnifying-glass text-muted"></i>
+                            <input type="text" id="omni-search" placeholder="Filter telemetry history..." style="width:100%; background:transparent; border:none; outline:none; font-size: 1rem;">
+                        </div>
+                        <div class="table-container" style="max-height: 350px;">
+                            <table id="search-table">
+                                <thead>
+                                    <tr>
+                                        <th>Pod</th>
+                                        <th>Command</th>
+                                        <th>Risk</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="search-table-body"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIEW: HISTORY -->
+            <div id="view-history" class="view-section hidden">
+                <div class="glass-panel" style="padding: 1.5rem;">
+                    <div class="section-header">
+                        <h3><i class="fa-solid fa-clock-rotate-left"></i> Action History Log</h3>
+                        <button id="btn-clear-logs" class="glass-panel" style="padding: 6px 12px; cursor:pointer; color:var(--accent-red); font-size:0.75rem; border:1px solid var(--panel-border); font-weight:600;">
+                            <i class="fa-solid fa-eraser"></i> Wipe Forensic Logs
+                        </button>
+                    </div>
+                    <div class="table-container mt-4">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Time</th>
+                                    <th>Action Type</th>
+                                    <th>Target Asset</th>
+                                    <th>Description/Reason</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="history-table-body">
+                                <tr><td colspan="4" class="empty-state">No historical actions found.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIEW: ARCHITECTURE & POLICIES -->
+            <div id="view-architecture" class="view-section hidden">
+                <div class="glass-panel" style="padding: 2rem;">
+                    <h2 class="text-blue" style="margin-bottom: 2rem;"><i class="fa-solid fa-shield-halved"></i> Security Policy & Risk Ranks</h2>
+                    
+                        <div class="glass-panel" style="padding: 2rem;">
+                            <i class="fa-solid fa-shield-halved fa-2x text-purple"></i>
+                            <h4 class="mt-4">Auto-Isolation</h4>
+                            <p style="font-size: 0.85rem; padding-top: 10px; color: var(--text-muted);">Automatically applying Network Policies to isolate compromised pods.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Sidebar Logic (Mobile Toggle & Desktop Collapse)
+        const toggle = document.getElementById('sidebar-toggle');
+        const sidebar = document.getElementById('sidebar');
+        const collapseBtn = document.getElementById('sidebar-collapse-btn');
+
+        // Mobile Hamburger Menu
+        toggle.addEventListener('click', () => {
+            sidebar.classList.toggle('active');
+            if (sidebar.classList.contains('active')) {
+                sidebar.classList.remove('collapsed');
+            }
+        });
+
+        // Sidebar Collapse (Desktop) / Close (Mobile)
+        collapseBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (window.innerWidth <= 1024) {
+                sidebar.classList.remove('active');
+            } else {
+                sidebar.classList.toggle('collapsed');
+            }
+        });
+
+        // Close sidebar on item click (mobile)
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', () => {
+                if (window.innerWidth <= 1024) {
+                    sidebar.classList.remove('active');
+                }
+            });
+        });
+    </script>
+    <script src="/static/js/main.js"></script>
+</body>
+</html>

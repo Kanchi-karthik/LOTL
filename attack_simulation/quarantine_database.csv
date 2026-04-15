@@ -1,0 +1,6 @@
+Action,Name,Reason,RiskImpact
+Quarantine,Isolate Pod,Complete Network Block,High
+Quarantine,Block IP,Attacker Identity Ban,High
+Quarantine,Kill Process,Malicious Executable Termination,Medium
+Investigation,Log Export,Forensic Telemetry Extraction,Low
+Investigation,Metadata Scan,Container Manifest Audit,Low

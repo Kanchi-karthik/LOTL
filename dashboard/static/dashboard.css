@@ -1,0 +1,25 @@
+body{
+background:#0f172a;
+color:white;
+font-family:Inter,Arial;
+}
+
+.container{
+max-width:1200px;
+}
+
+.card{
+background:#1e293b;
+border-radius:12px;
+padding:20px;
+margin:10px;
+box-shadow:0 4px 12px rgba(0,0,0,0.4);
+}
+
+h1{
+color:#38bdf8;
+}
+
+table{
+background:#1e293b;
+}

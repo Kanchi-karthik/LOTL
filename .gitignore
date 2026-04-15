@@ -1,0 +1,35 @@
+# Python environments
+.venv/
+venv/
+env/
+
+# Python cache/artifacts
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Runtime logs and generated state
+logs/
+*.log
+dashboard.log
+shared_kernel.log
+
+# Quarantine runtime artifacts
+data/quarantine/logs/
+dashboard/data/quarantine/logs/
+data/quarantine/quarantine_db.json
+dashboard/data/quarantine/quarantine_db.json
+
+# Temporary build/output files
+dist/
+build/
+*.tmp
