@@ -22,9 +22,9 @@
       --r: 14px;
       --poster-w: 1366px;
       --poster-h: 768px;
-      --text-base: 29px;
-      --text-small: 23px;
-      --heading: 36px;
+      --text-base: 16px;
+      --text-small: 14px;
+      --heading: 22px;
     }
 
     * { box-sizing: border-box; }
@@ -53,7 +53,7 @@
       border: 2px solid var(--maroon-soft);
       box-shadow: 0 24px 56px rgba(2, 14, 28, 0.5);
       display: grid;
-      grid-template-rows: 282px 1fr 134px;
+      grid-template-rows: 206px 1fr 84px;
       overflow: hidden;
       position: relative;
     }
@@ -84,10 +84,10 @@
     .header {
       z-index: 1;
       display: grid;
-      grid-template-columns: 520px 1fr 236px;
+      grid-template-columns: 540px 1fr 210px;
       align-items: center;
       gap: 12px;
-      padding: 24px 28px;
+      padding: 14px 18px;
       background: linear-gradient(180deg, #ffffff, #eef5fc);
       border-bottom: 3px solid rgba(126, 30, 62, 0.24);
     }
@@ -99,7 +99,7 @@
     }
 
     .logo {
-      width: 300px;
+      width: 340px;
       display: block;
       background: #fff;
       border: 1px solid rgba(0, 0, 0, 0.08);
@@ -108,13 +108,13 @@
     }
 
     .brand-text {
-      max-width: 210px;
+      max-width: 185px;
     }
 
     .brand-school {
       margin: 0;
       color: var(--maroon);
-      font-size: 18px;
+      font-size: 15px;
       letter-spacing: 0.5px;
       font-weight: 800;
       text-transform: uppercase;
@@ -124,7 +124,7 @@
     .brand-campus {
       margin: 5px 0 0;
       color: #3a536a;
-      font-size: 14px;
+      font-size: 11px;
       font-weight: 700;
       line-height: 1.3;
     }
@@ -134,7 +134,7 @@
     .school {
       margin: 0;
       color: var(--maroon);
-      font-size: 20px;
+      font-size: 12px;
       letter-spacing: 0.64px;
       text-transform: uppercase;
       font-weight: 800;
@@ -144,7 +144,7 @@
       margin: 4px 0 0;
       font-family: "Spectral", serif;
       color: #16324d;
-      font-size: clamp(78px, 6.1vw, 106px);
+      font-size: clamp(44px, 3.6vw, 58px);
       line-height: 1.03;
       text-transform: uppercase;
       letter-spacing: 0.25px;
@@ -154,7 +154,7 @@
     .subtitle {
       margin: 4px 0 0;
       color: #335872;
-      font-size: 30px;
+      font-size: 16px;
       font-weight: 600;
     }
 
@@ -169,8 +169,8 @@
     }
 
     .qr {
-      width: 205px;
-      height: 205px;
+      width: 128px;
+      height: 128px;
       display: block;
       border-radius: 6px;
       border: 1px solid rgba(8, 46, 72, 0.14);
@@ -179,7 +179,7 @@
     .qr-label {
       margin: 3px 0 0;
       color: #174d79;
-      font-size: 18px;
+      font-size: 11px;
       letter-spacing: 0.42px;
       text-transform: uppercase;
       font-weight: 800;
@@ -189,15 +189,15 @@
       z-index: 1;
       display: grid;
       grid-template-columns: 27% 46% 27%;
-      gap: 22px;
-      padding: 22px;
+      gap: 14px;
+      padding: 14px;
       overflow: auto;
       align-items: stretch;
     }
 
     .col {
       display: grid;
-      gap: 22px;
+      gap: 12px;
       align-content: stretch;
       min-height: 0;
     }
@@ -216,7 +216,7 @@
       border: 1px solid var(--line);
       box-shadow: var(--shadow);
       background: #fff;
-      padding: 22px 24px;
+      padding: 14px 16px;
       overflow: hidden;
       height: auto;
       display: flex;
@@ -257,12 +257,12 @@
       margin: 0;
       padding-left: 15px;
       font-size: var(--text-base);
-      line-height: 1.38;
+      line-height: 1.45;
       color: #21415b;
       font-weight: 500;
     }
 
-    li { margin-bottom: 16px; }
+    li { margin-bottom: 7px; }
 
     .arch-note {
       margin: 0 0 6px;
@@ -280,7 +280,7 @@
 
     .arch-image {
       width: 100%;
-      height: clamp(700px, 78vh, 1120px);
+      height: clamp(360px, 50vh, 620px);
       object-fit: contain;
       background: #0f2d49;
       display: block;
@@ -297,19 +297,19 @@
       display: flex;
       align-items: center;
       gap: 5px;
-      font-size: 26px;
+      font-size: 14px;
       font-weight: 700;
       color: #184666;
       background: rgba(255, 255, 255, 0.94);
       border: 1px solid rgba(16, 65, 99, 0.2);
       border-radius: 8px;
-      padding: 13px 15px;
+      padding: 7px 9px;
     }
 
     .chip img {
-      width: 30px;
-      height: 30px;
-      flex: 0 0 30px;
+      width: 16px;
+      height: 16px;
+      flex: 0 0 16px;
       object-fit: contain;
     }
 
@@ -325,7 +325,7 @@
     }
 
     .repo {
-      font-size: 28px;
+      font-size: 13px;
       font-weight: 700;
       color: #214861;
       line-height: 1.4;
@@ -340,16 +340,16 @@
     .repo a:hover { text-decoration: underline; }
 
     .note {
-      font-size: 22px;
+      font-size: 10px;
       color: #4a6780;
       font-weight: 600;
     }
 
-    .objective ul li:nth-child(n+3),
-    .modules ul li:nth-child(n+3),
-    .implementation ul li:nth-child(n+3),
-    .results ul li:nth-child(n+3),
-    .conclusion ul li:nth-child(n+3) {
+    .objective ul li:nth-child(n+4),
+    .modules ul li:nth-child(n+4),
+    .implementation ul li:nth-child(n+4),
+    .results ul li:nth-child(n+4),
+    .conclusion ul li:nth-child(n+4) {
       display: none;
     }
 
