@@ -6,20 +6,20 @@
   <title>LOTLGuard Project Poster</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700;900&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --paper: #fff9e8;
-      --ink: #1a1a1a;
-      --accent: #153b50;
-      --mint: #d8f0e5;
-      --sky: #d9eef9;
-      --apricot: #ffe1bf;
-      --rose: #f8d6da;
-      --lav: #e2dcff;
-      --gold: #ffe9a8;
-      --card-shadow: 0 10px 24px rgba(0, 0, 0, 0.07);
-      --radius: 18px;
+      --paper: #f3f8ff;
+      --ink: #0f1a27;
+      --navy: #0f2740;
+      --cyan: #2dc7e9;
+      --ice: #dff5ff;
+      --aqua: #d7fff4;
+      --peach: #ffe6cf;
+      --mist: #e9e8ff;
+      --rose: #ffe1eb;
+      --card-shadow: 0 16px 28px rgba(8, 22, 40, 0.12);
+      --radius: 20px;
     }
 
     * {
@@ -29,11 +29,11 @@
     body {
       margin: 0;
       background:
-        radial-gradient(circle at 20% 15%, rgba(255, 231, 180, 0.7), transparent 28%),
-        radial-gradient(circle at 80% 85%, rgba(200, 232, 255, 0.6), transparent 30%),
-        linear-gradient(180deg, #f9efd0 0%, #fff7e2 60%, #fff4d8 100%);
+        radial-gradient(circle at 14% 18%, rgba(45, 199, 233, 0.22), transparent 32%),
+        radial-gradient(circle at 85% 80%, rgba(255, 161, 104, 0.28), transparent 30%),
+        linear-gradient(160deg, #061423 0%, #0a2034 48%, #16365a 100%);
       color: var(--ink);
-      font-family: "Source Sans 3", sans-serif;
+      font-family: "Outfit", sans-serif;
       min-height: 100vh;
       padding: 18px;
     }
@@ -41,69 +41,56 @@
     .poster {
       width: min(1280px, 100%);
       margin: 0 auto;
-      border: 2px solid rgba(54, 54, 54, 0.2);
+      border: 1px solid rgba(172, 223, 255, 0.45);
       background: var(--paper);
       border-radius: 24px;
-      box-shadow: 0 24px 55px rgba(0, 0, 0, 0.16);
+      box-shadow: 0 28px 70px rgba(1, 7, 18, 0.55);
       overflow: hidden;
     }
 
     .header {
-      padding: 18px 24px 8px;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      align-items: center;
-      gap: 14px;
-      border-bottom: 2px dashed rgba(0, 0, 0, 0.16);
+      padding: 16px 18px 12px;
+      background: linear-gradient(180deg, #faffff 0%, #edf5ff 100%);
+      border-bottom: 2px solid rgba(26, 74, 116, 0.14);
     }
 
-    .brand {
-      color: #5b2a0d;
-      font-weight: 700;
-      letter-spacing: 0.4px;
-      font-size: 1rem;
-      text-transform: uppercase;
+    .amrita-banner {
+      width: 100%;
+      border-radius: 14px;
+      border: 1px solid rgba(0, 0, 0, 0.09);
+      box-shadow: 0 8px 16px rgba(10, 35, 58, 0.14);
     }
 
     .title-wrap {
       text-align: center;
-      grid-column: 1 / -1;
+      padding: 10px 6px 2px;
     }
 
     h1 {
       margin: 6px 0 0;
-      font-family: "Merriweather", serif;
+      font-family: "Playfair Display", serif;
       font-weight: 900;
       line-height: 1.1;
-      font-size: clamp(1.65rem, 3.2vw, 3.1rem);
+      font-size: clamp(1.7rem, 3vw, 3.1rem);
       text-transform: uppercase;
-      color: #101010;
-      letter-spacing: 0.4px;
+      color: #0d2338;
+      letter-spacing: 0.5px;
     }
 
     .subtitle {
-      margin: 8px 0 0;
+      margin: 8px 0 2px;
       font-size: clamp(0.95rem, 1.8vw, 1.2rem);
       font-weight: 600;
-      color: #3f3f3f;
+      color: #29435a;
     }
 
-    .qr-mini {
-      justify-self: end;
-      text-align: center;
-      border: 1px solid rgba(0, 0, 0, 0.18);
-      border-radius: 14px;
-      background: #fff;
-      padding: 8px;
-      box-shadow: var(--card-shadow);
-    }
-
-    .qr-mini p {
-      margin: 4px 0 0;
-      font-size: 0.78rem;
+    .school-line {
+      margin: 0;
+      font-size: clamp(0.88rem, 1.4vw, 1rem);
       font-weight: 700;
-      letter-spacing: 0.4px;
       text-transform: uppercase;
+      color: #6f1d42;
+      letter-spacing: 0.45px;
     }
 
     .main {
@@ -122,28 +109,29 @@
 
     .card h2 {
       margin: 0 0 8px;
-      font-family: "Merriweather", serif;
+      font-family: "Playfair Display", serif;
       font-size: 1.08rem;
       text-transform: uppercase;
       letter-spacing: 0.5px;
+      color: #14324c;
     }
 
     .objective {
-      background: var(--sky);
+      background: var(--ice);
     }
 
     .contrib {
-      background: var(--lav);
+      background: var(--mist);
       margin-top: 14px;
     }
 
     .implementation {
-      background: #ffd2be;
+      background: var(--peach);
       margin-top: 14px;
     }
 
     .results {
-      background: var(--apricot);
+      background: #fff2dd;
     }
 
     .conclusion {
@@ -167,51 +155,26 @@
     }
 
     .architecture {
-      background: #eef8ff;
-      min-height: 320px;
+      background: linear-gradient(180deg, #ecfbff 0%, #dff4ff 100%);
+      min-height: 390px;
     }
 
     .diagram-note {
       margin: 0 0 12px;
-      color: #313131;
+      color: #234761;
       font-size: 0.96rem;
       font-weight: 600;
     }
 
-    .flow {
-      display: grid;
-      gap: 10px;
-    }
-
-    .flow-row {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 8px;
-      align-items: center;
-    }
-
-    .node {
-      background: #fff;
-      border: 1.4px solid #89aac0;
-      border-radius: 12px;
-      padding: 9px;
-      text-align: center;
-      font-weight: 700;
-      font-size: 0.9rem;
-      min-height: 58px;
-      display: grid;
-      place-items: center;
-    }
-
-    .arrow {
-      text-align: center;
-      font-size: 1.4rem;
-      color: #28556e;
-      font-weight: 900;
+    .arch-image {
+      width: 100%;
+      border-radius: 14px;
+      border: 1px solid rgba(14, 48, 76, 0.16);
+      box-shadow: 0 10px 20px rgba(9, 28, 44, 0.16);
     }
 
     .stack {
-      background: var(--mint);
+      background: var(--aqua);
     }
 
     .stack-grid {
@@ -223,7 +186,7 @@
 
     .chip {
       background: #fff;
-      border: 1px solid rgba(0, 0, 0, 0.12);
+      border: 1px solid rgba(11, 45, 75, 0.16);
       border-radius: 10px;
       padding: 8px;
       text-align: center;
@@ -232,19 +195,16 @@
     }
 
     .footer {
-      border-top: 2px dashed rgba(0, 0, 0, 0.16);
-      padding: 12px 18px 18px;
-      display: grid;
-      grid-template-columns: 1.25fr auto;
-      gap: 14px;
-      align-items: center;
+      border-top: 2px solid rgba(24, 84, 130, 0.14);
+      padding: 14px 18px 20px;
+      background: linear-gradient(180deg, #f9fdff 0%, #eef7ff 100%);
     }
 
     .repo-box {
-      background: var(--gold);
-      border: 1px solid rgba(0, 0, 0, 0.15);
+      background: #e9f8ff;
+      border: 1px solid rgba(9, 60, 96, 0.2);
       border-radius: 12px;
-      padding: 10px 12px;
+      padding: 12px 14px;
     }
 
     .repo-label {
@@ -258,30 +218,13 @@
     .repo-link {
       font-size: clamp(0.82rem, 1.5vw, 0.98rem);
       font-weight: 700;
-      color: #143b74;
+      color: #11487a;
       word-break: break-all;
       text-decoration: none;
     }
 
     .repo-link:hover {
       text-decoration: underline;
-    }
-
-    .qr-large {
-      background: #fff;
-      border: 1px solid rgba(0, 0, 0, 0.18);
-      border-radius: 16px;
-      padding: 10px;
-      text-align: center;
-      box-shadow: var(--card-shadow);
-    }
-
-    .qr-large p {
-      margin: 8px 0 0;
-      font-size: 0.86rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.35px;
     }
 
     .muted {
@@ -294,12 +237,8 @@
         grid-template-columns: 1fr;
       }
 
-      .footer {
-        grid-template-columns: 1fr;
-      }
-
-      .qr-mini {
-        justify-self: start;
+      .title-wrap {
+        padding: 10px 0 0;
       }
     }
 
@@ -322,12 +261,9 @@
 <body>
   <section class="poster">
     <header class="header">
-      <div class="brand">LOTLGuard Security Research Project</div>
-      <div class="qr-mini">
-        <img id="miniQr" alt="GitHub QR" width="82" height="82" />
-        <p>Scan Repo</p>
-      </div>
+      <img class="amrita-banner" src="poster_assets/amrita_header.svg" alt="Amrita Vishwa Vidyapeetham and School of Computing" />
       <div class="title-wrap">
+        <p class="school-line">School of Computing | Cybersecurity Project Showcase</p>
         <h1>LOTLGuard: Living-Off-The-Land Threat Detection Framework</h1>
         <p class="subtitle">ML-Driven Real-Time SOC Dashboard with MITRE Mapping, Quarantine, and Incident Response</p>
       </div>
@@ -371,30 +307,9 @@
 
       <section class="center">
         <article class="card architecture">
-          <h2>High-Level Architecture</h2>
-          <p class="diagram-note">Command and kernel events flow from simulation/monitoring to detection, scoring, response, and dashboard analytics.</p>
-          <div class="flow">
-            <div class="flow-row">
-              <div class="node">Shared Kernel App<br />Attack Simulator</div>
-              <div class="arrow">→</div>
-              <div class="node">inject_command.py<br />logs/falco_events.log</div>
-            </div>
-            <div class="flow-row">
-              <div class="node">falco_parser.py<br />Event Normalization</div>
-              <div class="arrow">→</div>
-              <div class="node">feature_builder.py<br />Vector Creation</div>
-            </div>
-            <div class="flow-row">
-              <div class="node">Isolation Forest<br />realtime_detector.py</div>
-              <div class="arrow">→</div>
-              <div class="node">threat_scoring.py<br />MITRE Mapper</div>
-            </div>
-            <div class="flow-row">
-              <div class="node">incident_response.py<br />auto_block.py</div>
-              <div class="arrow">→</div>
-              <div class="node">dashboard/app.py<br />Live SOC Panels</div>
-            </div>
-          </div>
+          <h2>System Architecture and Infrastructure</h2>
+          <p class="diagram-note">Custom architecture drawing generated for this poster, showing full LOTLGuard pipeline from telemetry ingestion to SOC response.</p>
+          <img class="arch-image" src="poster_assets/lotl_architecture.svg" alt="LOTLGuard architecture diagram" />
         </article>
 
         <article class="card stack">
@@ -439,33 +354,11 @@
 
     <footer class="footer">
       <div class="repo-box">
-        <p class="repo-label">GitHub Repository (QR Target)</p>
-        <a class="repo-link" id="repoLink" href="#" target="_blank" rel="noopener noreferrer"></a>
-        <p class="muted">Tip: pass ?repo=https://github.com/USERNAME/REPO in URL to override target instantly.</p>
-      </div>
-      <div class="qr-large">
-        <img id="mainQr" alt="Project GitHub QR" width="190" height="190" />
-        <p>Scan To Open Repo</p>
+        <p class="repo-label">GitHub Repository</p>
+        <a class="repo-link" href="https://github.com/Kanchi-karthik/LOTL" target="_blank" rel="noopener noreferrer">https://github.com/Kanchi-karthik/LOTL</a>
+        <p class="muted">Prepared for academic presentation with a clean visual-first layout and no footer QR block.</p>
       </div>
     </footer>
   </section>
-
-  <script>
-    const DEFAULT_REPO = "https://github.com/Kanchi-karthik/LOTL";
-    const params = new URLSearchParams(window.location.search);
-    const repo = params.get("repo") && params.get("repo").startsWith("http")
-      ? params.get("repo")
-      : DEFAULT_REPO;
-
-    const qrSrc = "https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=" + encodeURIComponent(repo);
-    const miniQrSrc = "https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=" + encodeURIComponent(repo);
-
-    const link = document.getElementById("repoLink");
-    link.href = repo;
-    link.textContent = repo;
-
-    document.getElementById("mainQr").src = qrSrc;
-    document.getElementById("miniQr").src = miniQrSrc;
-  </script>
 </body>
 </html>
