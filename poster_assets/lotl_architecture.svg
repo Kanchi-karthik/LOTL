@@ -1,111 +1,74 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="980" viewBox="0 0 1600 980" role="img" aria-label="LOTLGuard architecture diagram">
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1700" viewBox="0 0 1200 1700" role="img" aria-label="LOTLGuard architecture diagram portrait">
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#091a2b"/>
-      <stop offset="60%" stop-color="#0d2740"/>
-      <stop offset="100%" stop-color="#113859"/>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#081b2d"/>
+      <stop offset="100%" stop-color="#123b5f"/>
     </linearGradient>
-    <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#f0f9ff"/>
-      <stop offset="100%" stop-color="#d6eef9"/>
+    <linearGradient id="card" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f4fcff"/>
+      <stop offset="100%" stop-color="#d9f1ff"/>
     </linearGradient>
     <linearGradient id="core" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#7de5ff"/>
-      <stop offset="100%" stop-color="#42b6ff"/>
+      <stop offset="0%" stop-color="#7ae8ff"/>
+      <stop offset="100%" stop-color="#4fc7ff"/>
     </linearGradient>
-    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#001" flood-opacity="0.25"/>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#00101f" flood-opacity="0.35"/>
     </filter>
-    <marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
-      <path d="M0 0 L10 5 L0 10 z" fill="#44b8ff"/>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#71d8ff"/>
     </marker>
   </defs>
 
-  <rect width="1600" height="980" fill="url(#bg)"/>
-  <circle cx="120" cy="120" r="180" fill="#1f4d74" opacity="0.25"/>
-  <circle cx="1480" cy="880" r="240" fill="#1f4d74" opacity="0.2"/>
+  <rect width="1200" height="1700" fill="url(#bg)"/>
+  <circle cx="140" cy="180" r="220" fill="#2b6ca0" opacity="0.15"/>
+  <circle cx="1060" cy="1520" r="260" fill="#2b6ca0" opacity="0.15"/>
 
-  <text x="800" y="68" fill="#ffffff" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="42" font-weight="700">LOTLGuard Secure Detection Architecture</text>
-  <text x="800" y="104" fill="#bde8ff" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="22">End-to-End Flow: Command Telemetry -> ML Detection -> Threat Scoring -> Automated Response</text>
+  <text x="600" y="80" fill="#ffffff" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="44" font-weight="700">LOTLGuard Architecture Diagram</text>
+  <text x="600" y="122" fill="#c8ecff" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="24">Telemetry Ingestion -> Feature Engineering -> ML Detection -> Response -> SOC Dashboard</text>
 
-  <g filter="url(#shadow)">
-    <rect x="88" y="164" width="300" height="146" rx="16" fill="url(#panel)"/>
-    <rect x="438" y="164" width="300" height="146" rx="16" fill="url(#panel)"/>
-    <rect x="788" y="164" width="300" height="146" rx="16" fill="url(#panel)"/>
-    <rect x="1138" y="164" width="374" height="146" rx="16" fill="url(#panel)"/>
-
-    <rect x="188" y="404" width="300" height="146" rx="16" fill="url(#panel)"/>
-    <rect x="538" y="404" width="300" height="146" rx="16" fill="url(#core)"/>
-    <rect x="888" y="404" width="300" height="146" rx="16" fill="url(#panel)"/>
-    <rect x="1238" y="404" width="274" height="146" rx="16" fill="url(#panel)"/>
-
-    <rect x="330" y="646" width="300" height="146" rx="16" fill="url(#panel)"/>
-    <rect x="680" y="646" width="300" height="146" rx="16" fill="url(#panel)"/>
-    <rect x="1030" y="646" width="300" height="146" rx="16" fill="url(#panel)"/>
+  <g filter="url(#softShadow)">
+    <rect x="120" y="180" width="960" height="140" rx="20" fill="url(#card)"/>
+    <rect x="120" y="390" width="960" height="140" rx="20" fill="url(#card)"/>
+    <rect x="120" y="600" width="960" height="140" rx="20" fill="url(#card)"/>
+    <rect x="120" y="810" width="960" height="140" rx="20" fill="url(#core)"/>
+    <rect x="120" y="1020" width="960" height="140" rx="20" fill="url(#card)"/>
+    <rect x="120" y="1230" width="960" height="140" rx="20" fill="url(#card)"/>
+    <rect x="120" y="1440" width="960" height="140" rx="20" fill="url(#card)"/>
   </g>
 
-  <g fill="#0f2a3c" font-family="Segoe UI, Arial, sans-serif" text-anchor="middle">
-    <text x="238" y="216" font-size="24" font-weight="700">Shared Kernel UI</text>
-    <text x="238" y="246" font-size="19">attack_simulation/shared_kernel_app.py</text>
-    <text x="238" y="276" font-size="18">Manual and scripted LOTL commands</text>
+  <g fill="#0e2f49" font-family="Segoe UI, Arial, sans-serif" text-anchor="middle">
+    <text x="600" y="236" font-size="34" font-weight="700">1. Simulation and Event Generation</text>
+    <text x="600" y="274" font-size="24">shared_kernel_app.py + inject_command.py + logs/falco_events.log</text>
 
-    <text x="588" y="216" font-size="24" font-weight="700">Command Injector</text>
-    <text x="588" y="246" font-size="19">attack_simulation/inject_command.py</text>
-    <text x="588" y="276" font-size="18">Writes JSON events to runtime log</text>
+    <text x="600" y="446" font-size="34" font-weight="700">2. Parsing and Normalization</text>
+    <text x="600" y="484" font-size="24">parser/falco_parser.py converts raw events into structured telemetry</text>
 
-    <text x="938" y="216" font-size="24" font-weight="700">Log Stream</text>
-    <text x="938" y="246" font-size="19">logs/falco_events.log</text>
-    <text x="938" y="276" font-size="18">Falco-compatible event telemetry</text>
+    <text x="600" y="656" font-size="34" font-weight="700">3. Feature Engineering</text>
+    <text x="600" y="694" font-size="24">feature_builder.py extracts entropy, dangerous tools, and path/network indicators</text>
 
-    <text x="1325" y="216" font-size="24" font-weight="700">Parser and Normalizer</text>
-    <text x="1325" y="246" font-size="19">parser/falco_parser.py</text>
-    <text x="1325" y="276" font-size="18">Structured event extraction</text>
+    <text x="600" y="866" font-size="34" font-weight="700">4. ML Anomaly Detection Core</text>
+    <text x="600" y="904" font-size="24">realtime_detector.py with Isolation Forest + confidence scoring</text>
 
-    <text x="338" y="456" font-size="24" font-weight="700">Feature Builder</text>
-    <text x="338" y="486" font-size="19">feature_engineering/feature_builder.py</text>
-    <text x="338" y="516" font-size="18">Entropy, tools, paths, network hints</text>
+    <text x="600" y="1076" font-size="34" font-weight="700">5. Threat Scoring and MITRE Mapping</text>
+    <text x="600" y="1114" font-size="24">threat_scoring.py + mitre_mapper.py produce score and ATTACK technique labels</text>
 
-    <text x="688" y="456" font-size="24" font-weight="700">ML Anomaly Engine</text>
-    <text x="688" y="486" font-size="19">detection/realtime_detector.py</text>
-    <text x="688" y="516" font-size="18">Isolation Forest + confidence output</text>
+    <text x="600" y="1286" font-size="34" font-weight="700">6. Automated Response and Quarantine</text>
+    <text x="600" y="1324" font-size="24">incident_response.py + quarantine_manager.py trigger containment and forensics</text>
 
-    <text x="1038" y="456" font-size="24" font-weight="700">Threat Scoring Core</text>
-    <text x="1038" y="486" font-size="19">backend/threat_scoring.py</text>
-    <text x="1038" y="516" font-size="18">ML + heuristic + behavior weighting</text>
-
-    <text x="1375" y="456" font-size="24" font-weight="700">MITRE Mapper</text>
-    <text x="1375" y="486" font-size="19">mitre/mitre_mapper.py</text>
-    <text x="1375" y="516" font-size="18">ATT&CK technique alignment</text>
-
-    <text x="480" y="698" font-size="24" font-weight="700">Incident Response</text>
-    <text x="480" y="728" font-size="19">response/incident_response.py</text>
-    <text x="480" y="758" font-size="18">Severity-based orchestration</text>
-
-    <text x="830" y="698" font-size="24" font-weight="700">Quarantine and Forensics</text>
-    <text x="830" y="728" font-size="19">backend/quarantine_manager.py</text>
-    <text x="830" y="758" font-size="18">Persistent isolation evidence logs</text>
-
-    <text x="1180" y="698" font-size="24" font-weight="700">SOC Dashboard</text>
-    <text x="1180" y="728" font-size="19">dashboard/app.py + JS analytics</text>
-    <text x="1180" y="758" font-size="18">Live incidents, topology, geolocation</text>
+    <text x="600" y="1496" font-size="34" font-weight="700">7. SOC Visualization Layer</text>
+    <text x="600" y="1534" font-size="24">dashboard/app.py renders incidents, topology, analytics, and operator workflow</text>
   </g>
 
-  <g stroke="#44b8ff" stroke-width="5" fill="none" marker-end="url(#arrow)">
-    <path d="M388 237 L438 237"/>
-    <path d="M738 237 L788 237"/>
-    <path d="M1088 237 L1138 237"/>
-
-    <path d="M1330 310 L1330 378 L338 378 L338 404"/>
-    <path d="M488 477 L538 477"/>
-    <path d="M838 477 L888 477"/>
-    <path d="M1188 477 L1238 477"/>
-
-    <path d="M1375 550 L1375 610 L480 610 L480 646"/>
-    <path d="M630 719 L680 719"/>
-    <path d="M980 719 L1030 719"/>
+  <g stroke="#71d8ff" stroke-width="7" fill="none" marker-end="url(#arrow)">
+    <path d="M600 320 L600 382"/>
+    <path d="M600 530 L600 592"/>
+    <path d="M600 740 L600 802"/>
+    <path d="M600 950 L600 1012"/>
+    <path d="M600 1160 L600 1222"/>
+    <path d="M600 1370 L600 1432"/>
   </g>
 
-  <g fill="#d7f3ff" font-family="Segoe UI, Arial, sans-serif">
-    <text x="118" y="930" font-size="18">Security posture: fast anomaly detection, explainable scoring, and automated containment.</text>
-  </g>
+  <rect x="120" y="1615" width="960" height="52" rx="12" fill="#0d2a43" opacity="0.75"/>
+  <text x="600" y="1648" fill="#cbf0ff" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="22">Designed for presentation readability in portrait poster format</text>
 </svg>
