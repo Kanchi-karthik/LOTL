@@ -21,8 +21,8 @@
   </defs>
 
   <rect width="1200" height="700" fill="url(#bg)"/>
-  <text x="600" y="62" fill="#ffffff" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="46" font-weight="700">LOTLGuard Detection Pipeline</text>
-  <text x="600" y="96" fill="#b8eaff" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="22">Simulation -> Parsing -> Feature Engineering -> ML Detection -> Scoring -> Response -> Dashboard</text>
+  <text x="600" y="66" fill="#ffffff" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="56" font-weight="700">LOTLGuard Detection Pipeline</text>
+  <text x="600" y="104" fill="#b8eaff" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="28">Simulation -> Parsing -> Feature Engineering -> ML Detection -> Scoring -> Response -> Dashboard</text>
 
   <g filter="url(#shadow)">
     <rect x="38" y="130" width="152" height="90" rx="12" fill="url(#card)"/>
@@ -35,26 +35,26 @@
   </g>
 
   <g fill="#12324b" font-family="Segoe UI, Arial, sans-serif" text-anchor="middle">
-    <text x="114" y="166" font-size="18" font-weight="700">Simulation</text>
-    <text x="114" y="192" font-size="14">shared_kernel_app.py</text>
+    <text x="114" y="170" font-size="21" font-weight="700">Simulation</text>
+    <text x="114" y="198" font-size="16">shared_kernel_app.py</text>
 
-    <text x="284" y="166" font-size="18" font-weight="700">Injection</text>
-    <text x="284" y="192" font-size="14">inject_command.py</text>
+    <text x="284" y="170" font-size="21" font-weight="700">Injection</text>
+    <text x="284" y="198" font-size="16">inject_command.py</text>
 
-    <text x="454" y="166" font-size="18" font-weight="700">Parsing</text>
-    <text x="454" y="192" font-size="14">falco_parser.py</text>
+    <text x="454" y="170" font-size="21" font-weight="700">Parsing</text>
+    <text x="454" y="198" font-size="16">falco_parser.py</text>
 
-    <text x="624" y="166" font-size="18" font-weight="700">ML Detection</text>
-    <text x="624" y="192" font-size="14">Isolation Forest</text>
+    <text x="624" y="170" font-size="21" font-weight="700">ML Detection</text>
+    <text x="624" y="198" font-size="16">Isolation Forest</text>
 
-    <text x="794" y="166" font-size="18" font-weight="700">Threat Score</text>
-    <text x="794" y="192" font-size="14">threat_scoring.py</text>
+    <text x="794" y="170" font-size="21" font-weight="700">Threat Score</text>
+    <text x="794" y="198" font-size="16">threat_scoring.py</text>
 
-    <text x="964" y="166" font-size="18" font-weight="700">Response</text>
-    <text x="964" y="192" font-size="14">incident_response.py</text>
+    <text x="964" y="170" font-size="21" font-weight="700">Response</text>
+    <text x="964" y="198" font-size="16">incident_response.py</text>
 
-    <text x="1110" y="166" font-size="18" font-weight="700">SOC UI</text>
-    <text x="1110" y="192" font-size="14">dashboard/app.py</text>
+    <text x="1110" y="170" font-size="21" font-weight="700">SOC UI</text>
+    <text x="1110" y="198" font-size="16">dashboard/app.py</text>
   </g>
 
   <g stroke="#72d8ff" stroke-width="4" fill="none" marker-end="url(#arrow)">
