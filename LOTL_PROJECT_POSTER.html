@@ -9,8 +9,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --poster-width: 841mm;
-      --poster-height: 594mm;
+      --poster-width: 594mm;
+      --poster-height: 841mm;
       --paper: #f3f8ff;
       --ink: #0f1a27;
       --navy: #0f2740;
@@ -41,14 +41,14 @@
     }
 
     .poster {
-      width: min(96vw, calc((100vh - 36px) * 1.416));
-      aspect-ratio: 841 / 594;
+      width: min(92vw, calc((96vh - 20px) * 0.706));
+      aspect-ratio: 594 / 841;
       margin: 0 auto;
       border: 1px solid rgba(172, 223, 255, 0.45);
       background: var(--paper);
       border-radius: 24px;
       box-shadow: 0 28px 70px rgba(1, 7, 18, 0.55);
-      overflow: hidden;
+      overflow: auto;
     }
 
     .header {
@@ -62,6 +62,9 @@
       border-radius: 14px;
       border: 1px solid rgba(0, 0, 0, 0.09);
       box-shadow: 0 8px 16px rgba(10, 35, 58, 0.14);
+      background: #ffffff;
+      padding: 8px 10px;
+      object-fit: contain;
     }
 
     .title-wrap {
@@ -246,7 +249,7 @@
     }
 
     @page {
-      size: A1 landscape;
+      size: A1 portrait;
       margin: 0;
     }
 
@@ -276,7 +279,7 @@
 <body>
   <section class="poster">
     <header class="header">
-      <img class="amrita-banner" src="poster_assets/amrita_header.svg" alt="Amrita Vishwa Vidyapeetham and School of Computing" />
+      <img class="amrita-banner" src="amrita.png" alt="Amrita Vishwa Vidyapeetham" />
       <div class="title-wrap">
         <p class="school-line">School of Computing | Cybersecurity Project Showcase</p>
         <h1>LOTLGuard: Living-Off-The-Land Threat Detection Framework</h1>
