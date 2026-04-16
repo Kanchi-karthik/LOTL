@@ -33,3 +33,24 @@ dashboard/data/quarantine/quarantine_db.json
 dist/
 build/
 *.tmp
+
+# Machine learning models (should be generated/trained locally)
+*.pkl
+*.joblib
+*.h5
+*.model
+
+# Large data files (should be downloaded/generated separately)
+*.csv
+dataset/
+large_data/
+
+# Large binary files
+*.exe
+*.bin
+*.so
+*.dylib
+
+# Generated documentation/artifacts
+framework_guide.txt
+LOTL_PROJECT_POSTER.html
